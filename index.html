@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA Dock</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .container { text-align: center; }
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    h1 span { color: #3b82f6; }
+    .subtitle { color: #94a3b8; font-size: 1.1rem; margin-bottom: 2rem; }
+    .cards {
+      display: flex; gap: 1rem; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 2rem;
+    }
+    .card {
+      padding: 1.5rem 2rem; border-radius: 12px;
+      min-width: 140px; text-align: center;
+    }
+    .card .count { font-size: 2rem; font-weight: 700; }
+    .card .label { font-size: 0.85rem; opacity: 0.9; margin-top: 4px; }
+    .card-needed   { background: rgba(239,68,68,0.15); border: 1px solid #ef4444; color: #ef4444; }
+    .card-review   { background: rgba(249,115,22,0.15); border: 1px solid #f97316; color: #f97316; }
+    .card-progress { background: rgba(59,130,246,0.15); border: 1px solid #3b82f6; color: #3b82f6; }
+    .card-done     { background: rgba(34,197,94,0.15); border: 1px solid #22c55e; color: #22c55e; }
+    .status {
+      background: #1e293b; padding: 1rem 2rem; border-radius: 8px;
+      color: #94a3b8; font-size: 0.9rem;
+    }
+    .status .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>QA <span>Dock</span></h1>
+    <p class="subtitle">QA Team Dashboard</p>
+    <div class="cards">
+      <div class="card card-needed">
+        <div class="count">-</div>
+        <div class="label">QA 필요</div>
+      </div>
+      <div class="card card-review">
+        <div class="count">-</div>
+        <div class="label">QA 리뷰</div>
+      </div>
+      <div class="card card-progress">
+        <div class="count">-</div>
+        <div class="label">QA 진행</div>
+      </div>
+      <div class="card card-done">
+        <div class="count">-</div>
+        <div class="label">QA 완료</div>
+      </div>
+    </div>
+    <div class="status">
+      <span class="dot"></span> GitHub Pages 배포 성공 — Jira 연동 준비 중
+    </div>
+  </div>
+</body>
+</html>
