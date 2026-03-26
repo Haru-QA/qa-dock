@@ -97,7 +97,7 @@
     /* ── Top Fixed Info: 3-column grid ── */
     .wf-top-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
@@ -116,9 +116,10 @@
       font-weight: 700;
     }
 
-    /* Bug Flow */
+    /* Bug Flow - 2 rows */
+    .bug-flow-wrap { display: flex; flex-direction: column; align-items: center; gap: 0; }
     .bug-flow-row {
-      display: flex; align-items: center; gap: 0; flex-wrap: wrap;
+      display: flex; align-items: center; gap: 0;
       justify-content: center;
     }
     .bug-st {
@@ -128,6 +129,7 @@
     .bug-st.hl-blue  { border: 1px solid var(--blue); color: var(--blue); background: rgba(59,130,246,0.1); }
     .bug-st.hl-green { border: 1px solid var(--green); color: var(--green); background: rgba(34,197,94,0.1); }
     .bug-arr { color: var(--text-muted); font-size: 0.9rem; padding: 0 0.25rem; }
+    .bug-arr-down { color: var(--text-muted); font-size: 0.9rem; padding: 0.3rem 0; }
     .bug-sub { color: var(--text-muted); font-size: 0.7rem; margin-top: 0.6rem; text-align: center; line-height: 1.5; }
 
     /* Priority */
@@ -276,8 +278,11 @@
 
     /* Responsive */
     @media (max-width: 1024px) {
-      .wf-top-grid { grid-template-columns: 1fr; }
+      .wf-top-grid { grid-template-columns: 1fr 1fr; }
       .wf-main { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .wf-top-grid { grid-template-columns: 1fr; }
       .phase-sidebar {
         flex-direction: row; flex-wrap: wrap; gap: 0.5rem;
         position: static;
@@ -297,7 +302,7 @@
         <button class="tab-btn" data-tab="workflow">QA Work Flow</button>
       </nav>
     </div>
-    <div class="header-right">Last updated: -</div>
+    <div class="header-right">1440px 해상도 최적화 &nbsp;|&nbsp; Last updated: -</div>
   </header>
 
   <!-- ══ Dashboard Tab ══ -->
@@ -322,13 +327,18 @@
     <div class="wf-top-grid">
       <div class="wf-panel">
         <h3>Bug Status Flow</h3>
-        <div class="bug-flow-row">
-          <span class="bug-st">대기중</span><span class="bug-arr">&#8594;</span>
-          <span class="bug-st">개발중</span><span class="bug-arr">&#8594;</span>
-          <span class="bug-st">리뷰중</span><span class="bug-arr">&#8594;</span>
-          <span class="bug-st">머지됨</span><span class="bug-arr">&#8594;</span>
-          <span class="bug-st hl-blue">QA중</span><span class="bug-arr">&#8594;</span>
-          <span class="bug-st hl-green">완료</span>
+        <div class="bug-flow-wrap">
+          <div class="bug-flow-row">
+            <span class="bug-st">대기중</span><span class="bug-arr">&#8594;</span>
+            <span class="bug-st">개발중</span><span class="bug-arr">&#8594;</span>
+            <span class="bug-st">리뷰중</span>
+          </div>
+          <div class="bug-arr-down">&#8595;</div>
+          <div class="bug-flow-row">
+            <span class="bug-st hl-green">완료</span><span class="bug-arr">&#8592;</span>
+            <span class="bug-st hl-blue">QA중</span><span class="bug-arr">&#8592;</span>
+            <span class="bug-st">머지됨</span>
+          </div>
         </div>
         <div class="bug-sub">미수정: QA중 &#8594; 대기중 &nbsp;&middot;&nbsp; 오탐: QA중 &#8594; 버그아님 &nbsp;&middot;&nbsp; 보류: 대기중 &#8594; 백로그</div>
       </div>
@@ -351,6 +361,17 @@
           <div class="tool-entry"><span class="tool-name">Slack</span><span class="tool-desc">배포진행, product-leads (전체)</span></div>
           <div class="tool-entry"><span class="tool-name">xmind</span><span class="tool-desc">TC 설계 (P3)</span></div>
           <div class="tool-entry"><span class="tool-name">Playwright</span><span class="tool-desc">웹 자동화, Allure (P5)</span></div>
+        </div>
+      </div>
+      <div class="wf-panel">
+        <h3>담당 범례</h3>
+        <div style="display:flex;flex-direction:column;gap:0.45rem;">
+          <div style="display:flex;align-items:center;gap:0.5rem;"><span class="badge b-plan">기획팀</span><span style="font-size:0.72rem;color:var(--text-dim);">PRD, 과제 리뷰, 티켓 생성</span></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;"><span class="badge b-dev">개발팀</span><span style="font-size:0.72rem;color:var(--text-dim);">개발, 배포, 버그 수정</span></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;"><span class="badge b-qa">QA팀</span><span style="font-size:0.72rem;color:var(--text-dim);">TC 설계, 테스트, Sign-off</span></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;"><span class="badge b-design">디자인팀</span><span style="font-size:0.72rem;color:var(--text-dim);">디자인 가이드</span></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;"><span class="badge b-lead">리더</span><span style="font-size:0.72rem;color:var(--text-dim);">담당자 지정, 의사결정</span></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;"><span class="badge b-all">전체</span><span style="font-size:0.72rem;color:var(--text-dim);">전체 참여 활동</span></div>
         </div>
       </div>
     </div>
@@ -402,7 +423,7 @@
               <tr><td class="step-id">1-4</td><td>유관 부서 대상 과제 리뷰 미팅</td><td><span class="badge b-plan">기획팀</span></td><td>-</td><td>-</td></tr>
               <tr><td class="step-id">1-5</td><td>디자인/서버/개발 담당자 지정</td><td><span class="badge b-lead">리더</span></td><td><span class="tag">Jira</span><span class="tag">Excel</span></td><td>-</td></tr>
               <tr><td class="step-id">1-6</td><td>디자인 가이드 공유</td><td><span class="badge b-design">디자인팀</span></td><td><span class="tag">Figma</span></td><td>디자인 가이드</td></tr>
-              <tr><td class="step-id">1-7</td><td>#그립-프로덕트--배포진행 Thread 생성</td><td><span class="badge b-qa">QA 리드</span></td><td><span class="tag">Slack</span></td><td>배포 스레드</td></tr>
+              <tr><td class="step-id">1-7</td><td>#그립-프로덕트--배포진행 Thread 생성</td><td>-</td><td><span class="tag">Slack</span></td><td>배포 스레드</td></tr>
             </tbody>
           </table>
         </div>
