@@ -104,12 +104,12 @@
       border-bottom: 2px solid var(--border);
     }
     .wf-section-title {
-      font-size: 1rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--text);
-      padding: 1.2rem 0 0.8rem 0;
+      padding: 1.5rem 0 1rem 0;
     }
-    .wf-section-title span { color: var(--text-muted); font-weight: 400; font-size: 0.85rem; margin-left: 0.5rem; }
+    .wf-section-title span { color: var(--text-muted); font-weight: 400; font-size: 0.88rem; margin-left: 0.6rem; }
     .wf-panel {
       background: var(--bg2);
       border: 1px solid var(--bg3);
@@ -167,7 +167,7 @@
     /* ── Main area: sidebar + detail ── */
     .wf-main {
       display: grid;
-      grid-template-columns: 260px 1fr;
+      grid-template-columns: 280px 1fr;
       gap: 1.5rem;
       align-items: start;
     }
@@ -181,8 +181,8 @@
       top: 72px;
     }
     .phase-card {
-      display: flex; align-items: center; gap: 0.8rem;
-      padding: 1rem 1.2rem;
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.1rem 1.3rem;
       background: var(--bg2);
       border: 1px solid var(--bg3);
       border-bottom: none;
@@ -201,16 +201,16 @@
     }
     .phase-card.active + .phase-card { border-top-color: var(--blue); }
     .phase-num {
-      width: 32px; height: 32px; border-radius: 50%;
+      width: 38px; height: 38px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
+      font-size: 1rem; font-weight: 700; flex-shrink: 0;
       background: var(--bg3); color: var(--text-dim);
     }
     .phase-card.active .phase-num { background: var(--blue); color: #fff; }
     .phase-info { display: flex; flex-direction: column; }
-    .phase-title { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .phase-title { font-size: 1.0rem; font-weight: 700; color: var(--text); }
     .phase-card.active .phase-title { color: var(--blue); }
-    .phase-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+    .phase-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 3px; }
     /* connector line */
     .phase-connector {
       width: 2px; height: 12px; background: var(--bg3);
@@ -234,13 +234,13 @@
       margin-bottom: 0.4rem;
     }
     .pd-num {
-      width: 36px; height: 36px; border-radius: 50%;
+      width: 40px; height: 40px; border-radius: 50%;
       background: var(--blue); color: #fff;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; font-weight: 700; flex-shrink: 0;
+      font-size: 1.1rem; font-weight: 700; flex-shrink: 0;
     }
-    .pd-title { font-size: 1.15rem; font-weight: 700; }
-    .pd-desc { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 1.2rem; margin-left: 44px; }
+    .pd-title { font-size: 1.25rem; font-weight: 700; }
+    .pd-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.3rem; margin-left: 48px; }
 
     /* Step table */
     .step-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
