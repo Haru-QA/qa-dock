@@ -5,67 +5,915 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QA Dock</title>
   <style>
+    :root {
+      --bg: #0f172a;
+      --bg2: #1e293b;
+      --bg3: #334155;
+      --text: #e2e8f0;
+      --text-dim: #94a3b8;
+      --text-muted: #64748b;
+      --border: #475569;
+      --blue: #3b82f6;
+      --red: #ef4444;
+      --orange: #f97316;
+      --green: #22c55e;
+      --cyan: #06b6d4;
+      --purple: #a855f7;
+      --amber: #f59e0b;
+      --qa-needed: #ef4444;
+      --qa-review: #f97316;
+      --qa-progress: #3b82f6;
+      --qa-done: #22c55e;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
     }
-    .container { text-align: center; }
-    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    h1 span { color: #3b82f6; }
-    .subtitle { color: #94a3b8; font-size: 1.1rem; margin-bottom: 2rem; }
-    .cards {
+
+    /* ── Header ── */
+    .header {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--bg3);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-left { display: flex; align-items: center; gap: 2rem; }
+    .logo { font-size: 1.4rem; font-weight: 700; }
+    .logo span { color: var(--blue); }
+
+    /* ── Tab Navigation ── */
+    .tab-nav {
+      display: flex;
+      gap: 0;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+    }
+
+    .header-right {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* ── Tab Content ── */
+    .tab-content { display: none; padding: 2rem; max-width: 1400px; margin: 0 auto; }
+    .tab-content.active { display: block; }
+
+    /* ── Dashboard Tab ── */
+    .board-cards {
       display: flex; gap: 1rem; justify-content: center;
       flex-wrap: wrap; margin-bottom: 2rem;
     }
-    .card {
+    .board-card {
       padding: 1.5rem 2rem; border-radius: 12px;
-      min-width: 140px; text-align: center;
+      min-width: 160px; text-align: center; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
-    .card .count { font-size: 2rem; font-weight: 700; }
-    .card .label { font-size: 0.85rem; opacity: 0.9; margin-top: 4px; }
-    .card-needed   { background: rgba(239,68,68,0.15); border: 1px solid #ef4444; color: #ef4444; }
-    .card-review   { background: rgba(249,115,22,0.15); border: 1px solid #f97316; color: #f97316; }
-    .card-progress { background: rgba(59,130,246,0.15); border: 1px solid #3b82f6; color: #3b82f6; }
-    .card-done     { background: rgba(34,197,94,0.15); border: 1px solid #22c55e; color: #22c55e; }
-    .status {
-      background: #1e293b; padding: 1rem 2rem; border-radius: 8px;
-      color: #94a3b8; font-size: 0.9rem;
+    .board-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .board-card .count { font-size: 2.2rem; font-weight: 700; }
+    .board-card .label { font-size: 0.85rem; opacity: 0.9; margin-top: 4px; }
+    .card-needed   { background: rgba(239,68,68,0.12); border: 1px solid var(--qa-needed); color: var(--qa-needed); }
+    .card-review   { background: rgba(249,115,22,0.12); border: 1px solid var(--qa-review); color: var(--qa-review); }
+    .card-progress { background: rgba(59,130,246,0.12); border: 1px solid var(--qa-progress); color: var(--qa-progress); }
+    .card-done     { background: rgba(34,197,94,0.12); border: 1px solid var(--qa-done); color: var(--qa-done); }
+
+    .status-bar {
+      background: var(--bg2); padding: 0.8rem 1.5rem; border-radius: 8px;
+      color: var(--text-dim); font-size: 0.85rem; text-align: center;
     }
-    .status .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; margin-right: 6px; }
+    .status-bar .dot {
+      display: inline-block; width: 8px; height: 8px;
+      border-radius: 50%; background: var(--green); margin-right: 6px;
+    }
+
+    /* ── Workflow Tab ── */
+    .workflow-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .workflow-header h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .workflow-header p {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    /* Phase Flow Bar */
+    .phase-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .phase-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid var(--bg3);
+      background: var(--bg2);
+      color: var(--text-dim);
+    }
+    .phase-pill:hover, .phase-pill.active {
+      border-color: var(--blue);
+      color: var(--text);
+      background: rgba(59,130,246,0.1);
+    }
+    .phase-pill .num {
+      background: var(--bg3);
+      color: var(--text-dim);
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700;
+    }
+    .phase-pill.active .num {
+      background: var(--blue);
+      color: #fff;
+    }
+    .phase-arrow {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      padding: 0 0.3rem;
+      user-select: none;
+    }
+
+    /* Phase Detail Card */
+    .phase-detail {
+      display: none;
+      background: var(--bg2);
+      border: 1px solid var(--bg3);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      animation: fadeIn 0.2s ease;
+    }
+    .phase-detail.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    .phase-detail h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .phase-detail .phase-desc {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Step Table */
+    .step-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .step-table th {
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--bg3);
+    }
+    .step-table td {
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid rgba(51,65,85,0.5);
+      color: var(--text);
+    }
+    .step-table tr:last-child td { border-bottom: none; }
+    .step-table tr:hover td { background: rgba(59,130,246,0.05); }
+
+    .step-id {
+      color: var(--text-muted);
+      font-family: monospace;
+      font-size: 0.8rem;
+    }
+    .badge-owner {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-plan   { background: rgba(168,85,247,0.15); color: var(--purple); }
+    .badge-dev    { background: rgba(6,182,212,0.15); color: var(--cyan); }
+    .badge-qa     { background: rgba(59,130,246,0.15); color: var(--blue); }
+    .badge-design { background: rgba(249,115,22,0.15); color: var(--orange); }
+    .badge-all    { background: rgba(148,163,184,0.15); color: var(--text-dim); }
+    .badge-lead   { background: rgba(245,158,11,0.15); color: var(--amber); }
+
+    .tool-tag {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 0.72rem;
+      background: var(--bg3);
+      color: var(--text-dim);
+      margin-right: 3px;
+    }
+
+    /* Bug Flow */
+    .bug-flow-section {
+      background: var(--bg2);
+      border: 1px solid var(--bg3);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .bug-flow-section h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+    }
+    .bug-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .bug-state {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: var(--bg3);
+      color: var(--text);
+    }
+    .bug-arrow {
+      padding: 0 0.4rem;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+    .bug-note {
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Tool Map */
+    .tool-map {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .tool-item {
+      background: var(--bg2);
+      border: 1px solid var(--bg3);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .tool-item h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    .tool-item p {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+    .tool-item .phases {
+      margin-top: 0.4rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* Priority Table */
+    .priority-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+    }
+    .priority-table th {
+      text-align: left;
+      padding: 0.5rem 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.75rem;
+      border-bottom: 1px solid var(--bg3);
+    }
+    .priority-table td {
+      padding: 0.5rem 0.8rem;
+      border-bottom: 1px solid rgba(51,65,85,0.5);
+    }
+    .p-blocker  { color: #dc2626; }
+    .p-critical { color: #ea580c; }
+    .p-major    { color: #ca8a04; }
+    .p-minor    { color: #65a30d; }
+    .p-trivial  { color: #9ca3af; }
+
+    /* Sub sections row */
+    .sub-sections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .sub-sections { grid-template-columns: 1fr; }
+      .phase-flow { gap: 0.3rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>QA <span>Dock</span></h1>
-    <p class="subtitle">QA Team Dashboard</p>
-    <div class="cards">
-      <div class="card card-needed">
+
+  <!-- ── Header + Tabs ── -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">QA <span>Dock</span></div>
+      <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="workflow">QA Work Flow</button>
+        <button class="tab-btn" data-tab="dashboard">QA 상황판</button>
+      </nav>
+    </div>
+    <div class="header-right">Last updated: -</div>
+  </header>
+
+  <!-- ── Workflow Tab ── -->
+  <div id="tab-workflow" class="tab-content active">
+    <div class="workflow-header">
+      <h2>QA Process Work Flow</h2>
+      <p>과제 기획부터 릴리즈까지 6단계 QA 프로세스</p>
+    </div>
+
+    <!-- Phase Flow Bar -->
+    <div class="phase-flow">
+      <div class="phase-pill active" data-phase="1">
+        <span class="num">1</span> 기획/준비
+      </div>
+      <span class="phase-arrow">&#8594;</span>
+      <div class="phase-pill" data-phase="2">
+        <span class="num">2</span> 일정/티켓
+      </div>
+      <span class="phase-arrow">&#8594;</span>
+      <div class="phase-pill" data-phase="3">
+        <span class="num">3</span> TC 설계
+      </div>
+      <span class="phase-arrow">&#8594;</span>
+      <div class="phase-pill" data-phase="4">
+        <span class="num">4</span> Dev QA
+      </div>
+      <span class="phase-arrow">&#8594;</span>
+      <div class="phase-pill" data-phase="5">
+        <span class="num">5</span> 배포
+      </div>
+      <span class="phase-arrow">&#8594;</span>
+      <div class="phase-pill" data-phase="6">
+        <span class="num">6</span> 릴리즈 후
+      </div>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="phase-detail active" data-phase="1">
+      <h3>Phase 1: 기획 & 과제 준비</h3>
+      <p class="phase-desc">PRD 작성 → 과제 리뷰 미팅 → 담당자 지정 → 배포 스레드 생성</p>
+      <table class="step-table">
+        <thead>
+          <tr><th>단계</th><th>활동</th><th>담당</th><th>도구</th><th>산출물</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="step-id">1-1</td>
+            <td>PRD 작성</td>
+            <td><span class="badge-owner badge-plan">기획팀</span></td>
+            <td><span class="tool-tag">Confluence</span></td>
+            <td>PRD 문서</td>
+          </tr>
+          <tr>
+            <td class="step-id">1-2</td>
+            <td>프로덕트 리더에게 기획 1차 공유 (선택)</td>
+            <td><span class="badge-owner badge-plan">기획팀</span></td>
+            <td><span class="tool-tag">Figma</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">1-3</td>
+            <td><strong>후보 과제 리뷰 미팅</strong> (배포 1주전 수요일)</td>
+            <td><span class="badge-owner badge-all">전체</span></td>
+            <td><span class="tool-tag">Confluence</span></td>
+            <td>후보 과제 확정</td>
+          </tr>
+          <tr>
+            <td class="step-id">1-4</td>
+            <td>유관 부서 대상 과제 리뷰 미팅</td>
+            <td><span class="badge-owner badge-plan">기획팀</span></td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">1-5</td>
+            <td>디자인/서버/개발 담당자 지정</td>
+            <td><span class="badge-owner badge-lead">리더</span></td>
+            <td><span class="tool-tag">Jira</span><span class="tool-tag">Excel</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">1-6</td>
+            <td>디자인 가이드 공유</td>
+            <td><span class="badge-owner badge-design">디자인팀</span></td>
+            <td><span class="tool-tag">Figma</span></td>
+            <td>디자인 가이드</td>
+          </tr>
+          <tr>
+            <td class="step-id">1-7</td>
+            <td>#그립-프로덕트--배포진행 Thread 생성</td>
+            <td><span class="badge-owner badge-qa">QA 리드</span></td>
+            <td><span class="tool-tag">Slack</span></td>
+            <td>배포 스레드</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-detail" data-phase="2">
+      <h3>Phase 2: 일정 산정 & 티켓 생성</h3>
+      <p class="phase-desc">상세 리뷰 → 고객가치/에픽 티켓 생성 → QA 할당 → 일정 확정</p>
+      <table class="step-table">
+        <thead>
+          <tr><th>단계</th><th>활동</th><th>담당</th><th>도구</th><th>산출물</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="step-id">2-1</td>
+            <td><strong>상세 과제 리뷰 미팅</strong> (배포 주간 목/금)</td>
+            <td><span class="badge-owner badge-plan">기획팀</span></td>
+            <td><span class="tool-tag">Confluence</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">2-2</td>
+            <td>고객가치 티켓 생성 (Assignee, Fixed version, Priority)</td>
+            <td><span class="badge-owner badge-plan">기획자</span></td>
+            <td><span class="tool-tag">Jira (GRIPPGM)</span></td>
+            <td>고객가치 티켓</td>
+          </tr>
+          <tr>
+            <td class="step-id">2-3</td>
+            <td>과제별 Slack Thread/채널 생성</td>
+            <td><span class="badge-owner badge-plan">기획팀</span></td>
+            <td><span class="tool-tag">Slack</span></td>
+            <td>과제 스레드</td>
+          </tr>
+          <tr>
+            <td class="step-id">2-4</td>
+            <td>도메인별 에픽 티켓 생성 (Start/Due date)</td>
+            <td><span class="badge-owner badge-dev">개발팀</span></td>
+            <td><span class="tool-tag">Jira (WEB/SVR/AND/iOS)</span></td>
+            <td>개발 에픽</td>
+          </tr>
+          <tr>
+            <td class="step-id">2-5</td>
+            <td>QA 에픽 티켓 생성</td>
+            <td><span class="badge-owner badge-qa">QA 리드</span></td>
+            <td><span class="tool-tag">Jira (GRIPPE)</span></td>
+            <td>QA 에픽</td>
+          </tr>
+          <tr>
+            <td class="step-id">2-6</td>
+            <td>개발 일정 산정 완료 -> Slack 과제 스레드에 남김</td>
+            <td><span class="badge-owner badge-dev">개발팀</span></td>
+            <td><span class="tool-tag">Slack</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">2-7</td>
+            <td>담당 QA 할당 + QA시작일/종료일 업데이트</td>
+            <td><span class="badge-owner badge-qa">QA 리드</span></td>
+            <td><span class="tool-tag">Jira</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">2-8</td>
+            <td>TC 에픽 티켓 생성 + 필수 항목 업데이트</td>
+            <td><span class="badge-owner badge-qa">담당 QA</span></td>
+            <td><span class="tool-tag">Jira (GRIPPE)</span></td>
+            <td>TC 에픽</td>
+          </tr>
+          <tr>
+            <td class="step-id">2-9</td>
+            <td>일정 산정 완료 -> #product-leads 공유</td>
+            <td><span class="badge-owner badge-qa">QA 리드</span></td>
+            <td><span class="tool-tag">Slack</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">2-10</td>
+            <td>Jira Release Tag 및 Timeline 관리</td>
+            <td><span class="badge-owner badge-qa">QA 리드</span></td>
+            <td><span class="tool-tag">Jira</span></td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-detail" data-phase="3">
+      <h3>Phase 3: TC 설계</h3>
+      <p class="phase-desc">기획서 + 디자인 피그마 기반 TC 작성 → 리뷰 → 확정</p>
+      <table class="step-table">
+        <thead>
+          <tr><th>단계</th><th>활동</th><th>담당</th><th>도구</th><th>산출물</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="step-id">3-1</td>
+            <td>기획서 + 디자인 피그마 기반 TC 작성</td>
+            <td><span class="badge-owner badge-qa">담당 QA</span></td>
+            <td><span class="tool-tag">xmind</span></td>
+            <td>TC (xmind)</td>
+          </tr>
+          <tr>
+            <td class="step-id">3-2</td>
+            <td>QA Weekly에서 TC 리뷰</td>
+            <td><span class="badge-owner badge-qa">QA팀</span></td>
+            <td>-</td>
+            <td>리뷰 피드백</td>
+          </tr>
+          <tr>
+            <td class="step-id">3-3</td>
+            <td>TC 확정 및 수정 반영</td>
+            <td><span class="badge-owner badge-qa">담당 QA</span></td>
+            <td><span class="tool-tag">xmind</span></td>
+            <td>TC 확정본</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="phase-detail" data-phase="4">
+      <h3>Phase 4: 개발 & QA (Dev QA)</h3>
+      <p class="phase-desc">개발 완료 → Dev QA 수행 → 버그 등록/수정 → 리그레션</p>
+      <table class="step-table">
+        <thead>
+          <tr><th>단계</th><th>활동</th><th>담당</th><th>도구</th><th>산출물</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="step-id">4-1</td>
+            <td>개발 진행</td>
+            <td><span class="badge-owner badge-dev">개발팀</span></td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">4-2</td>
+            <td>개발 완료 -> 에픽 "QA중" 전환</td>
+            <td><span class="badge-owner badge-dev">개발팀</span></td>
+            <td><span class="tool-tag">Jira</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">4-3</td>
+            <td><strong>Dev QA</strong> (개발환경 테스트 수행)</td>
+            <td><span class="badge-owner badge-qa">담당 QA</span></td>
+            <td><span class="tool-tag">개발환경</span></td>
+            <td>테스트 결과</td>
+          </tr>
+          <tr>
+            <td class="step-id">4-4</td>
+            <td>버그 발견 -> Jira 버그 등록</td>
+            <td><span class="badge-owner badge-qa">담당 QA</span></td>
+            <td><span class="tool-tag">Jira</span></td>
+            <td>버그 티켓</td>
+          </tr>
+          <tr>
+            <td class="step-id">4-5</td>
+            <td>개발자 버그 수정 (대기중->개발중->머지됨->QA중)</td>
+            <td><span class="badge-owner badge-dev">개발팀</span></td>
+            <td><span class="tool-tag">Jira</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">4-6</td>
+            <td>수정 확인 -> 리그레션 테스트</td>
+            <td><span class="badge-owner badge-qa">담당 QA</span></td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">4-7</td>
+            <td>수정 완료 -> "완료" 처리 / 미수정 -> "대기중" 재전환</td>
+            <td><span class="badge-owner badge-qa">담당 QA</span></td>
+            <td><span class="tool-tag">Jira</span></td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Phase 5 -->
+    <div class="phase-detail" data-phase="5">
+      <h3>Phase 5: 배포</h3>
+      <p class="phase-desc">정기배포 (앱, 2주 주기) + 비정기배포 (서버+웹)</p>
+      <table class="step-table">
+        <thead>
+          <tr><th>단계</th><th>활동</th><th>담당</th><th>도구</th><th>요일</th></tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="5" style="color:var(--blue);font-weight:600;padding-top:1rem;">정기배포 (앱, 2주 주기)</td></tr>
+          <tr>
+            <td class="step-id">5-1</td>
+            <td>개발환경 테스트 완료</td>
+            <td><span class="badge-owner badge-qa">QA팀</span></td>
+            <td>-</td>
+            <td>월요일</td>
+          </tr>
+          <tr>
+            <td class="step-id">5-2</td>
+            <td>서버 운영 배포</td>
+            <td><span class="badge-owner badge-dev">개발팀</span></td>
+            <td>-</td>
+            <td>화요일 오후</td>
+          </tr>
+          <tr>
+            <td class="step-id">5-3</td>
+            <td>세니티 테스트 + 운영 리그레션</td>
+            <td><span class="badge-owner badge-qa">QA팀</span></td>
+            <td><span class="tool-tag">운영환경</span></td>
+            <td>화요일</td>
+          </tr>
+          <tr>
+            <td class="step-id">5-4</td>
+            <td>앱 크래쉬 로그 확인</td>
+            <td><span class="badge-owner badge-qa">QA팀</span></td>
+            <td>-</td>
+            <td>화요일</td>
+          </tr>
+          <tr>
+            <td class="step-id">5-5</td>
+            <td>QA 티켓 + 도메인 에픽 티켓 닫기</td>
+            <td><span class="badge-owner badge-qa">QA팀</span></td>
+            <td><span class="tool-tag">Jira</span></td>
+            <td>화요일</td>
+          </tr>
+          <tr>
+            <td class="step-id">5-6</td>
+            <td>배포 스레드에 <strong>앱 Sign-off</strong></td>
+            <td><span class="badge-owner badge-qa">QA팀</span></td>
+            <td><span class="tool-tag">Slack</span></td>
+            <td>화요일</td>
+          </tr>
+          <tr>
+            <td class="step-id">5-7</td>
+            <td>앱스토어 심사 요청</td>
+            <td><span class="badge-owner badge-dev">개발팀</span></td>
+            <td><span class="tool-tag">App Store</span><span class="tool-tag">Play Store</span></td>
+            <td>화~수</td>
+          </tr>
+          <tr><td colspan="5" style="color:var(--cyan);font-weight:600;padding-top:1rem;">비정기배포 (서버+웹)</td></tr>
+          <tr>
+            <td class="step-id">5-8</td>
+            <td>개발환경 테스트 완료 + 티켓 닫기</td>
+            <td><span class="badge-owner badge-qa">QA팀</span></td>
+            <td><span class="tool-tag">Jira</span></td>
+            <td>화요일</td>
+          </tr>
+          <tr>
+            <td class="step-id">5-9</td>
+            <td>서버/프론트 운영 배포</td>
+            <td><span class="badge-owner badge-dev">개발팀</span></td>
+            <td>-</td>
+            <td>수요일</td>
+          </tr>
+          <tr>
+            <td class="step-id">5-10</td>
+            <td>세니티 테스트 + 웹 자동화 실행</td>
+            <td><span class="badge-owner badge-qa">QA팀</span></td>
+            <td><span class="tool-tag">Selenium</span></td>
+            <td>수요일</td>
+          </tr>
+          <tr><td colspan="5" style="color:var(--text-dim);font-weight:600;padding-top:1rem;">배포 후 공통</td></tr>
+          <tr>
+            <td class="step-id">5-11</td>
+            <td>배포 완료 공유 + 모니터링</td>
+            <td><span class="badge-owner badge-dev">개발팀</span></td>
+            <td><span class="tool-tag">Slack</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">5-12</td>
+            <td>리그레션 테스트 완료 공유</td>
+            <td><span class="badge-owner badge-qa">QA팀</span></td>
+            <td><span class="tool-tag">Slack</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">5-13</td>
+            <td>과제 고객가치 티켓 정리</td>
+            <td><span class="badge-owner badge-plan">기획팀</span></td>
+            <td><span class="tool-tag">Jira</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">5-14</td>
+            <td>릴리스 노트 공유</td>
+            <td><span class="badge-owner badge-plan">기획</span><span class="badge-owner badge-dev" style="margin-left:3px">개발</span></td>
+            <td><span class="tool-tag">Slack</span></td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Phase 6 -->
+    <div class="phase-detail" data-phase="6">
+      <h3>Phase 6: 릴리즈 후</h3>
+      <p class="phase-desc">앱스토어 출시 → 모니터링 → 100% 롤아웃 → 라이브 버그 대응</p>
+      <table class="step-table">
+        <thead>
+          <tr><th>단계</th><th>활동</th><th>담당</th><th>도구</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="step-id">6-1</td>
+            <td>앱스토어 출시 + 점진 배포</td>
+            <td><span class="badge-owner badge-dev">개발팀</span></td>
+            <td><span class="tool-tag">App Store</span><span class="tool-tag">Play Store</span></td>
+          </tr>
+          <tr>
+            <td class="step-id">6-2</td>
+            <td>모니터링 (크래쉬, VOC)</td>
+            <td><span class="badge-owner badge-qa">QA</span><span class="badge-owner badge-dev" style="margin-left:3px">개발</span></td>
+            <td><span class="tool-tag">Slack</span><span class="tool-tag">모니터링</span></td>
+          </tr>
+          <tr>
+            <td class="step-id">6-3</td>
+            <td>100% 롤아웃</td>
+            <td><span class="badge-owner badge-dev">개발팀</span></td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td class="step-id">6-4</td>
+            <td>라이브 버그 -> Slack 공유 -> QA 원인 조사 -> Jira 등록 -> 핫픽스</td>
+            <td><span class="badge-owner badge-qa">QA</span><span class="badge-owner badge-dev" style="margin-left:3px">개발</span></td>
+            <td><span class="tool-tag">Slack</span><span class="tool-tag">Jira</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bug State Flow + Priority -->
+    <div class="sub-sections">
+      <div class="bug-flow-section">
+        <h3>Bug Status Flow</h3>
+        <div class="bug-flow">
+          <span class="bug-state">대기중</span>
+          <span class="bug-arrow">&#8594;</span>
+          <span class="bug-state">개발중</span>
+          <span class="bug-arrow">&#8594;</span>
+          <span class="bug-state">리뷰중</span>
+          <span class="bug-arrow">&#8594;</span>
+          <span class="bug-state">머지됨</span>
+          <span class="bug-arrow">&#8594;</span>
+          <span class="bug-state" style="border:1px solid var(--blue);color:var(--blue);">QA중</span>
+          <span class="bug-arrow">&#8594;</span>
+          <span class="bug-state" style="border:1px solid var(--green);color:var(--green);">완료</span>
+        </div>
+        <div class="bug-note">미수정 시: QA중 -> 대기중 재전환 &nbsp;|&nbsp; 오탐: QA중 -> 버그아님 &nbsp;|&nbsp; 보류: 대기중 -> 백로그</div>
+      </div>
+
+      <div class="bug-flow-section">
+        <h3>Bug Priority</h3>
+        <table class="priority-table">
+          <thead>
+            <tr><th>등급</th><th>설명</th><th>예시</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="p-blocker"><strong>Blocker</strong></td><td>앱 사용 불가</td><td>App Crash, Login Fail</td></tr>
+            <tr><td class="p-critical"><strong>Critical</strong></td><td>심각한 기능 문제</td><td>결제 오류, 방송 오류</td></tr>
+            <tr><td class="p-major"><strong>Major</strong></td><td>눈에 띄는 문제</td><td>기대 결과와 다름</td></tr>
+            <tr><td class="p-minor"><strong>Minor</strong></td><td>사소한 문제</td><td>텍스트 버그, 낮은 재현율</td></tr>
+            <tr><td class="p-trivial"><strong>Trivial</strong></td><td>거의 문제 없음</td><td>유사 표현 차이</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tool Map -->
+    <div class="bug-flow-section" style="margin-top:1.5rem;">
+      <h3>Tool Map</h3>
+      <div class="tool-map">
+        <div class="tool-item">
+          <h4>Jira</h4>
+          <p>티켓 관리, 칸반보드, 타임라인, Release Tag</p>
+          <div class="phases">Phase 2~6</div>
+        </div>
+        <div class="tool-item">
+          <h4>Confluence</h4>
+          <p>PRD, 프로세스 문서, Test Plan</p>
+          <div class="phases">Phase 1, 2</div>
+        </div>
+        <div class="tool-item">
+          <h4>Figma</h4>
+          <p>기획/디자인 가이드</p>
+          <div class="phases">Phase 1, 3</div>
+        </div>
+        <div class="tool-item">
+          <h4>Slack</h4>
+          <p>#그립-프로덕트--배포진행, #product-leads</p>
+          <div class="phases">전 단계</div>
+        </div>
+        <div class="tool-item">
+          <h4>xmind</h4>
+          <p>TC 설계</p>
+          <div class="phases">Phase 3</div>
+        </div>
+        <div class="tool-item">
+          <h4>Playwright</h4>
+          <p>웹 자동화 (Pytest, Allure Report)</p>
+          <div class="phases">Phase 5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Dashboard Tab ── -->
+  <div id="tab-dashboard" class="tab-content">
+    <div class="workflow-header">
+      <h2>QA 상황판</h2>
+      <p>Jira 연동 후 실시간 데이터가 표시됩니다</p>
+    </div>
+    <div class="board-cards">
+      <div class="board-card card-needed">
         <div class="count">-</div>
         <div class="label">QA 필요</div>
       </div>
-      <div class="card card-review">
+      <div class="board-card card-review">
         <div class="count">-</div>
         <div class="label">QA 리뷰</div>
       </div>
-      <div class="card card-progress">
+      <div class="board-card card-progress">
         <div class="count">-</div>
         <div class="label">QA 진행</div>
       </div>
-      <div class="card card-done">
+      <div class="board-card card-done">
         <div class="count">-</div>
         <div class="label">QA 완료</div>
       </div>
     </div>
-    <div class="status">
+    <div class="status-bar">
       <span class="dot"></span> GitHub Pages 배포 성공 — Jira 연동 준비 중
     </div>
   </div>
+
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Phase switching
+    document.querySelectorAll('.phase-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.phase-pill').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.phase-detail').forEach(d => d.classList.remove('active'));
+        pill.classList.add('active');
+        document.querySelector('.phase-detail[data-phase="' + pill.dataset.phase + '"]').classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
