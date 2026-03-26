@@ -99,8 +99,17 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid var(--border);
     }
+    .wf-section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      padding: 1.2rem 0 0.8rem 0;
+    }
+    .wf-section-title span { color: var(--text-muted); font-weight: 400; font-size: 0.85rem; margin-left: 0.5rem; }
     .wf-panel {
       background: var(--bg2);
       border: 1px solid var(--bg3);
@@ -375,6 +384,9 @@
         </div>
       </div>
     </div>
+
+    <!-- Section divider -->
+    <div class="wf-section-title">QA Process 6단계<span>Phase를 선택하면 상세 활동이 표시됩니다</span></div>
 
     <!-- Main: Phase sidebar + Detail -->
     <div class="wf-main">
