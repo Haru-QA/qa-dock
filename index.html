@@ -992,15 +992,15 @@
         else if (cs.startsWith('TC - ')) cs = cs.slice(5);
         else if (cs.startsWith('QA ')) cs = cs.slice(3);
         else if (cs.startsWith('TC ')) cs = cs.slice(3);
-        html += '<tr>' +
-          '<td><span class="prefix-badge ' + pc + '">' + t.prefix + '</span></td>' +
-          '<td><a href="' + t.jiraUrl + '" target="_blank" class="jira-link">' + t.key + ' &#8599;</a></td>' +
-          '<td><span class="summary-text" title="' + t.summary.replace(/"/g,'&quot;') + '">' + cs.trim() + '</span></td>' +
         const bc = t.bugCount || 0;
         const bugHtml = bc > 0
           ? '<span class="bug-count-badge has-bugs">' + bc + '</span>'
           : '<span class="bug-count-badge no-bugs">0</span>';
-        html += '<td>' + (bp !== '-' ? '<span class="biz-pri ' + bpc + '">' + bp + '</span>' : '-') + '</td>' +
+        html += '<tr>' +
+          '<td><span class="prefix-badge ' + pc + '">' + t.prefix + '</span></td>' +
+          '<td><a href="' + t.jiraUrl + '" target="_blank" class="jira-link">' + t.key + ' &#8599;</a></td>' +
+          '<td><span class="summary-text" title="' + t.summary.replace(/"/g,'&quot;') + '">' + cs.trim() + '</span></td>' +
+          '<td>' + (bp !== '-' ? '<span class="biz-pri ' + bpc + '">' + bp + '</span>' : '-') + '</td>' +
           '<td><span class="status-badge ' + sc + '">' + t.status + '</span></td>' +
           '<td>' + bugHtml + '</td>' +
           '<td>' + t.assignee + '</td>' +
