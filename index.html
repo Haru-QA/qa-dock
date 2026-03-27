@@ -90,42 +90,28 @@
       border-radius: 50%; background: var(--green); margin-right: 6px;
     }
 
-    /* ── Dashboard layout ── */
-    .dash-layout {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 1.2rem;
-      align-items: start;
+    /* ── Dashboard group tabs (horizontal) ── */
+    .dash-group-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
-    .dash-group-sidebar {
-      display: flex; flex-direction: column; gap: 0;
-      position: sticky; top: 72px;
-    }
-    .dg-card {
-      display: flex; align-items: center; gap: 0.7rem;
-      padding: 0.9rem 1rem;
+    .dg-tab {
       background: rgba(30,41,59,0.3);
       border: 1px solid rgba(51,65,85,0.5);
-      border-bottom: none;
-      cursor: pointer; transition: all 0.15s;
+      color: var(--text-dim);
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.15s;
     }
-    .dg-card:first-child { border-radius: 10px 10px 0 0; }
-    .dg-card:last-child { border-bottom: 1px solid rgba(51,65,85,0.5); border-radius: 0 0 10px 10px; }
-    .dg-card:hover { background: rgba(59,130,246,0.05); }
-    .dg-card.active {
-      background: rgba(59,130,246,0.08);
+    .dg-tab:hover { background: rgba(59,130,246,0.05); color: var(--text); }
+    .dg-tab.active {
+      background: rgba(59,130,246,0.1);
       border-color: var(--blue);
-      border-bottom: 1px solid var(--blue);
-      z-index: 1; position: relative;
-    }
-    .dg-card.active + .dg-card { border-top-color: var(--blue); }
-    .dg-icon { font-size: 1rem; width: 24px; text-align: center; color: var(--text-muted); }
-    .dg-card.active .dg-icon { color: var(--blue); }
-    .dg-label { font-size: 0.88rem; font-weight: 600; color: var(--text); }
-    .dg-card.active .dg-label { color: var(--blue); }
-
-    .dash-content-area {
-      min-height: 200px;
+      color: var(--blue);
     }
     .dash-content-header {
       display: flex; justify-content: space-between; align-items: center;
@@ -441,37 +427,19 @@
       <div class="board-card card-done" data-stage="done" onclick="filterByStage('done')"><div class="count" id="cnt-done">-</div><div class="label">완료</div></div>
       <div class="board-card" style="background:rgba(148,163,184,0.08);border:1px solid var(--text-muted);color:var(--text-dim);" data-stage="all" onclick="filterByStage('all')"><div class="count" id="cnt-all">-</div><div class="label">전체</div></div>
     </div>
-    <!-- Group sidebar + Content area -->
-    <div id="dash-main" style="display:none;margin-top:1.5rem;">
-      <div class="dash-layout">
-        <!-- Left: Group sidebar -->
-        <div class="dash-group-sidebar">
-          <div class="dg-card active" data-group="all" onclick="switchGroup('all')">
-            <div class="dg-icon">&#9776;</div>
-            <div class="dg-label">전체 목록</div>
-          </div>
-          <div class="dg-card" data-group="byPrefix" onclick="switchGroup('byPrefix')">
-            <div class="dg-icon">&#9654;</div>
-            <div class="dg-label">유형별 (QA/TC)</div>
-          </div>
-          <div class="dg-card" data-group="byStatus" onclick="switchGroup('byStatus')">
-            <div class="dg-icon">&#9679;</div>
-            <div class="dg-label">상태별</div>
-          </div>
-          <div class="dg-card" data-group="byAssignee" onclick="switchGroup('byAssignee')">
-            <div class="dg-icon">&#9775;</div>
-            <div class="dg-label">담당자별</div>
-          </div>
-        </div>
-        <!-- Right: Content area with pagination -->
-        <div class="dash-content-area">
-          <div class="dash-content-header">
-            <h3 id="dash-content-title" style="font-size:1rem;font-weight:700;"></h3>
-            <div id="dash-pagination" class="dash-pagination"></div>
-          </div>
-          <div id="dash-content-body"></div>
-        </div>
+    <!-- Group tabs (horizontal, below cards) -->
+    <div id="dash-main" style="display:none;margin-top:1rem;">
+      <div class="dash-group-tabs">
+        <button class="dg-tab active" data-group="all" onclick="switchGroup('all')">전체 목록</button>
+        <button class="dg-tab" data-group="byPrefix" onclick="switchGroup('byPrefix')">유형별 (QA/TC)</button>
+        <button class="dg-tab" data-group="byStatus" onclick="switchGroup('byStatus')">상태별</button>
+        <button class="dg-tab" data-group="byAssignee" onclick="switchGroup('byAssignee')">담당자별</button>
       </div>
+      <div class="dash-content-header">
+        <h3 id="dash-content-title" style="font-size:1rem;font-weight:700;"></h3>
+        <div id="dash-pagination" class="dash-pagination"></div>
+      </div>
+      <div id="dash-content-body"></div>
     </div>
     <div id="dash-empty" class="status-bar" style="margin-top:1rem;">
       <span class="dot"></span> 카드를 클릭하면 상세 리스트가 표시됩니다
@@ -787,8 +755,8 @@
     function switchGroup(group) {
       currentGroup = group;
       currentPage = 1;
-      document.querySelectorAll('.dg-card').forEach(c => c.classList.remove('active'));
-      document.querySelector('.dg-card[data-group="' + group + '"]').classList.add('active');
+      document.querySelectorAll('.dg-tab').forEach(c => c.classList.remove('active'));
+      document.querySelector('.dg-tab[data-group="' + group + '"]').classList.add('active');
       renderGroupContent();
     }
 
