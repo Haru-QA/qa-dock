@@ -111,7 +111,7 @@
     }
     .wf-section-title span { color: var(--text-muted); font-weight: 400; font-size: 0.88rem; margin-left: 0.6rem; }
     .wf-panel {
-      background: var(--bg2);
+      background: rgba(30,41,59,0.5);
       border: 1px solid var(--bg3);
       border-radius: 10px;
       padding: 1.2rem;
@@ -216,6 +216,16 @@
       width: 2px; height: 12px; background: var(--bg3);
       margin-left: calc(1.2rem + 15px); /* align with center of num */
     }
+
+    /* Phase details area - match sidebar height, scroll */
+    .phase-details-area {
+      max-height: calc(6 * 72px);  /* approx sidebar height */
+      overflow-y: auto;
+    }
+    .phase-details-area::-webkit-scrollbar { width: 6px; }
+    .phase-details-area::-webkit-scrollbar-track { background: var(--bg); border-radius: 3px; }
+    .phase-details-area::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
+    .phase-details-area::-webkit-scrollbar-thumb:hover { background: var(--border); }
 
     /* Phase detail */
     .phase-detail {
@@ -332,7 +342,10 @@
   <!-- ══ Workflow Tab ══ -->
   <div id="tab-workflow" class="tab-content">
 
-    <!-- Top 3-column: Bug Flow | Priority | Tools -->
+    <!-- Top section title -->
+    <div class="wf-section-title" style="padding-top:0; padding-bottom:0.8rem;">공통 요소 및 범례</div>
+
+    <!-- Top 4-column grid -->
     <div class="wf-top-grid">
       <div class="wf-panel">
         <h3>Bug Status Flow</h3>
@@ -373,7 +386,7 @@
         </div>
       </div>
       <div class="wf-panel">
-        <h3>담당 범례</h3>
+        <h3>담당자 범례</h3>
         <div style="display:flex;flex-direction:column;gap:0.45rem;">
           <div style="display:flex;align-items:center;gap:0.5rem;"><span class="badge b-plan">기획팀</span><span style="font-size:0.72rem;color:var(--text-dim);">PRD, 과제 리뷰, 티켓 생성</span></div>
           <div style="display:flex;align-items:center;gap:0.5rem;"><span class="badge b-dev">개발팀</span><span style="font-size:0.72rem;color:var(--text-dim);">개발, 배포, 버그 수정</span></div>
@@ -556,9 +569,22 @@
         document.querySelectorAll('.phase-card').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.phase-detail').forEach(d => d.classList.remove('active'));
         card.classList.add('active');
-        document.querySelector('.phase-detail[data-phase="' + card.dataset.phase + '"]').classList.add('active');
+        const detail = document.querySelector('.phase-detail[data-phase="' + card.dataset.phase + '"]');
+        detail.classList.add('active');
+        // scroll detail area to top
+        document.querySelector('.phase-details-area').scrollTop = 0;
       });
     });
+    // Match detail area height to sidebar
+    function syncHeight() {
+      const sidebar = document.querySelector('.phase-sidebar');
+      const area = document.querySelector('.phase-details-area');
+      if (sidebar && area) {
+        area.style.maxHeight = sidebar.offsetHeight + 'px';
+      }
+    }
+    window.addEventListener('load', syncHeight);
+    window.addEventListener('resize', syncHeight);
   </script>
 </body>
 </html>
