@@ -256,8 +256,8 @@
     }
     .wf-section-title span { color: var(--text-muted); font-weight: 400; font-size: 0.88rem; margin-left: 0.6rem; }
     .wf-panel {
-      background: rgba(30,41,59,0.25);
-      border: 1px solid rgba(51,65,85,0.5);
+      background: rgba(30,41,59,0.12);
+      border: 1px solid rgba(51,65,85,0.3);
       border-radius: 10px;
       padding: 1.2rem;
     }
@@ -481,7 +481,7 @@
     <div class="dash-two-col">
       <!-- Left: QA 작업 현황 -->
       <div class="dash-section sec-qa" id="sec-qa">
-        <div class="dash-section-label">QA 작업 현황</div>
+        <div class="dash-section-label">QA 작업 현황 <span style="font-weight:400;font-size:0.72rem;letter-spacing:0;text-transform:none;">— 2026년 GRIPPE QA/TC 에픽</span></div>
         <div class="board-cards">
           <div class="board-card card-needed" data-stage="waiting" onclick="filterByStage('waiting')"><div class="count" id="cnt-waiting">-</div><div class="label">대기 중</div></div>
           <div class="board-card card-progress" data-stage="in_progress" onclick="filterByStage('in_progress')"><div class="count" id="cnt-in_progress">-</div><div class="label">진행 중</div></div>
@@ -491,7 +491,7 @@
       </div>
       <!-- Right: 결함 현황 -->
       <div class="dash-section sec-bug" id="sec-bug">
-        <div class="dash-section-label">결함 현황</div>
+        <div class="dash-section-label">결함 현황 <span style="font-weight:400;font-size:0.72rem;letter-spacing:0;text-transform:none;">— 최근 90일 Bug 티켓</span></div>
         <div class="board-cards">
           <div class="board-card card-needed" data-bug="open" onclick="filterByBug('open')"><div class="count" id="bug-open">-</div><div class="label">미해결</div></div>
           <div class="board-card card-progress" data-bug="inProgress" onclick="filterByBug('inProgress')"><div class="count" id="bug-inProgress">-</div><div class="label">진행 중</div></div>
