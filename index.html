@@ -90,6 +90,32 @@
       border-radius: 50%; background: var(--green); margin-right: 6px;
     }
 
+    .board-card.active-stage {
+      box-shadow: 0 0 0 2px #fff, 0 4px 20px rgba(0,0,0,0.3);
+      transform: translateY(-2px);
+    }
+    .status-badge {
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 0.73rem; font-weight: 600;
+    }
+    .sb-waiting    { background: rgba(239,68,68,0.15); color: var(--red); }
+    .sb-inprogress { background: rgba(59,130,246,0.15); color: var(--blue); }
+    .sb-done       { background: rgba(34,197,94,0.15); color: var(--green); }
+    .prefix-badge {
+      display: inline-block; padding: 2px 6px; border-radius: 3px;
+      font-size: 0.7rem; font-weight: 700;
+    }
+    .pb-qa { background: rgba(59,130,246,0.15); color: var(--blue); }
+    .pb-tc { background: rgba(168,85,247,0.15); color: var(--purple); }
+    .jira-link {
+      color: var(--blue); text-decoration: none; font-size: 0.8rem; font-weight: 600;
+    }
+    .jira-link:hover { text-decoration: underline; }
+    .summary-text {
+      max-width: 400px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      display: inline-block; vertical-align: middle;
+    }
+
     /* ══════════════════════════════════════
        Workflow Tab
        ══════════════════════════════════════ */
@@ -316,7 +342,7 @@
     <div class="header-left">
       <div class="logo">QA <span>Dock</span></div>
       <nav class="tab-nav">
-        <button class="tab-btn active" data-tab="dashboard">QA 상황판</button>
+        <button class="tab-btn active" data-tab="dashboard">QA 대시보드</button>
         <button class="tab-btn" data-tab="workflow">QA Work Flow</button>
       </nav>
     </div>
@@ -325,17 +351,50 @@
 
   <!-- ══ Dashboard Tab ══ -->
   <div id="tab-dashboard" class="tab-content active">
-    <div style="text-align:center;margin-bottom:2rem;">
-      <h2 style="font-size:1.4rem;margin-bottom:0.3rem;">QA 상황판</h2>
-      <p style="color:var(--text-dim);font-size:0.88rem;">Jira 연동 후 실시간 데이터가 표시됩니다</p>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <div>
+        <h2 style="font-size:1.4rem;margin-bottom:0.2rem;">QA 대시보드</h2>
+        <p style="color:var(--text-dim);font-size:0.82rem;">GRIPPE 칸반보드 &middot; QA/TC 프리픽스 필터 &middot; <span id="dash-updated">-</span></p>
+      </div>
+      <div style="color:var(--text-muted);font-size:0.82rem;">총 <span id="dash-total" style="color:var(--text);font-weight:700;">-</span>건</div>
     </div>
     <div class="board-cards">
-      <div class="board-card card-needed"><div class="count">-</div><div class="label">QA 필요</div></div>
-      <div class="board-card card-review"><div class="count">-</div><div class="label">QA 리뷰</div></div>
-      <div class="board-card card-progress"><div class="count">-</div><div class="label">QA 진행</div></div>
-      <div class="board-card card-done"><div class="count">-</div><div class="label">QA 완료</div></div>
+      <div class="board-card card-needed" data-stage="waiting" onclick="filterByStage('waiting')"><div class="count" id="cnt-waiting">-</div><div class="label">대기 중</div></div>
+      <div class="board-card card-progress" data-stage="in_progress" onclick="filterByStage('in_progress')"><div class="count" id="cnt-in_progress">-</div><div class="label">진행 중</div></div>
+      <div class="board-card card-done" data-stage="done" onclick="filterByStage('done')"><div class="count" id="cnt-done">-</div><div class="label">완료</div></div>
+      <div class="board-card" style="background:rgba(148,163,184,0.08);border:1px solid var(--text-muted);color:var(--text-dim);" data-stage="all" onclick="filterByStage('all')"><div class="count" id="cnt-all">-</div><div class="label">전체</div></div>
     </div>
-    <div class="status-bar"><span class="dot"></span> GitHub Pages 배포 성공 — Jira 연동 준비 중</div>
+    <div id="dash-table-area" style="margin-top:1.5rem;display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem;">
+        <h3 id="dash-table-title" style="font-size:1rem;font-weight:700;"></h3>
+        <div style="display:flex;gap:0.5rem;">
+          <select id="filter-prefix" onchange="applyFilters()" style="background:var(--bg2);color:var(--text);border:1px solid var(--bg3);border-radius:6px;padding:0.3rem 0.6rem;font-size:0.8rem;">
+            <option value="all">전체 (QA+TC)</option>
+            <option value="QA">QA만</option>
+            <option value="TC">TC만</option>
+          </select>
+          <select id="filter-assignee" onchange="applyFilters()" style="background:var(--bg2);color:var(--text);border:1px solid var(--bg3);border-radius:6px;padding:0.3rem 0.6rem;font-size:0.8rem;">
+            <option value="all">담당자 전체</option>
+          </select>
+        </div>
+      </div>
+      <table class="step-table" id="dash-table">
+        <thead>
+          <tr>
+            <th style="width:50px">유형</th>
+            <th style="width:110px">티켓</th>
+            <th>과제명</th>
+            <th style="width:80px;cursor:pointer;" onclick="sortTable('status')">상태 &#8597;</th>
+            <th style="width:80px;cursor:pointer;" onclick="sortTable('assignee')">담당 &#8597;</th>
+            <th style="width:80px;cursor:pointer;" onclick="sortTable('dueDate')">목표일 &#8597;</th>
+          </tr>
+        </thead>
+        <tbody id="dash-tbody"></tbody>
+      </table>
+    </div>
+    <div id="dash-empty" class="status-bar" style="margin-top:1rem;">
+      <span class="dot"></span> 카드를 클릭하면 상세 리스트가 표시됩니다
+    </div>
   </div>
 
   <!-- ══ Workflow Tab ══ -->
@@ -553,32 +612,30 @@
   </div>
 
   <script>
-    // Tab switching
+    // ── Tab switching ──
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         btn.classList.add('active');
         document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-        // sync height when switching to workflow tab
         if (btn.dataset.tab === 'workflow') {
           requestAnimationFrame(() => { syncHeight(); });
         }
       });
     });
-    // Phase switching
+
+    // ── Phase switching ──
     document.querySelectorAll('.phase-card').forEach(card => {
       card.addEventListener('click', () => {
         document.querySelectorAll('.phase-card').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.phase-detail').forEach(d => d.classList.remove('active'));
         card.classList.add('active');
-        const detail = document.querySelector('.phase-detail[data-phase="' + card.dataset.phase + '"]');
-        detail.classList.add('active');
-        // scroll detail area to top
+        document.querySelector('.phase-detail[data-phase="' + card.dataset.phase + '"]').classList.add('active');
         document.querySelector('.phase-details-area').scrollTop = 0;
       });
     });
-    // Match detail area height to sidebar
+
     function syncHeight() {
       const sidebar = document.querySelector('.phase-sidebar');
       const area = document.querySelector('.phase-details-area');
@@ -587,9 +644,140 @@
         area.style.maxHeight = h > 100 ? h + 'px' : 'none';
       }
     }
-    // Run after layout is complete
     requestAnimationFrame(() => { syncHeight(); });
     window.addEventListener('resize', syncHeight);
+
+    // ══════════════════════════════════════
+    //  Dashboard: Jira Data
+    // ══════════════════════════════════════
+    let dashData = null;
+    let currentStage = null;
+    let sortKey = null;
+    let sortAsc = true;
+
+    const stageMap = {
+      '대기 중': 'waiting',
+      '개발 중': 'in_progress',
+      '완료됨': 'done'
+    };
+    const stageLabels = { waiting: '대기 중', in_progress: '진행 중', done: '완료', all: '전체' };
+    const statusBadgeClass = { '대기 중': 'sb-waiting', '개발 중': 'sb-inprogress', '완료됨': 'sb-done' };
+
+    // Load data.json
+    fetch('data.json?t=' + Date.now())
+      .then(r => r.json())
+      .then(data => {
+        dashData = data;
+        renderSummary();
+        populateAssigneeFilter();
+        document.getElementById('dash-updated').textContent =
+          new Date(data.lastUpdated).toLocaleString('ko-KR', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+        document.querySelector('.header-right').innerHTML =
+          '1440px 해상도 최적화 &nbsp;|&nbsp; Last updated: ' +
+          new Date(data.lastUpdated).toLocaleString('ko-KR', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+      })
+      .catch(() => {
+        document.getElementById('dash-empty').innerHTML = '<span style="color:var(--red);">data.json 로드 실패</span>';
+      });
+
+    function renderSummary() {
+      const s = dashData.summary;
+      document.getElementById('cnt-waiting').textContent = s.waiting;
+      document.getElementById('cnt-in_progress').textContent = s.in_progress;
+      document.getElementById('cnt-done').textContent = s.done;
+      document.getElementById('cnt-all').textContent = s.total;
+      document.getElementById('dash-total').textContent = s.total;
+    }
+
+    function populateAssigneeFilter() {
+      const assignees = [...new Set(dashData.tickets.map(t => t.assignee))].filter(a => a !== '-').sort();
+      const sel = document.getElementById('filter-assignee');
+      assignees.forEach(a => {
+        const opt = document.createElement('option');
+        opt.value = a; opt.textContent = a;
+        sel.appendChild(opt);
+      });
+    }
+
+    function filterByStage(stage) {
+      currentStage = stage;
+      // Highlight active card
+      document.querySelectorAll('.board-card').forEach(c => c.classList.remove('active-stage'));
+      const card = document.querySelector('.board-card[data-stage="' + stage + '"]');
+      if (card) card.classList.add('active-stage');
+
+      document.getElementById('dash-table-area').style.display = 'block';
+      document.getElementById('dash-empty').style.display = 'none';
+      document.getElementById('dash-table-title').textContent = stageLabels[stage] + ' 목록';
+      applyFilters();
+    }
+
+    function applyFilters() {
+      if (!dashData || !currentStage) return;
+      const prefixFilter = document.getElementById('filter-prefix').value;
+      const assigneeFilter = document.getElementById('filter-assignee').value;
+
+      let tickets = dashData.tickets;
+
+      // Stage filter
+      if (currentStage !== 'all') {
+        tickets = tickets.filter(t => stageMap[t.status] === currentStage);
+      }
+      // Prefix filter
+      if (prefixFilter !== 'all') {
+        tickets = tickets.filter(t => t.prefix === prefixFilter);
+      }
+      // Assignee filter
+      if (assigneeFilter !== 'all') {
+        tickets = tickets.filter(t => t.assignee === assigneeFilter);
+      }
+      // Sort
+      if (sortKey) {
+        tickets.sort((a, b) => {
+          let va = a[sortKey] || '';
+          let vb = b[sortKey] || '';
+          if (va < vb) return sortAsc ? -1 : 1;
+          if (va > vb) return sortAsc ? 1 : -1;
+          return 0;
+        });
+      }
+
+      renderTable(tickets);
+    }
+
+    function sortTable(key) {
+      if (sortKey === key) { sortAsc = !sortAsc; }
+      else { sortKey = key; sortAsc = true; }
+      applyFilters();
+    }
+
+    function renderTable(tickets) {
+      const tbody = document.getElementById('dash-tbody');
+      if (tickets.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:2rem;">해당 조건의 티켓이 없습니다</td></tr>';
+        return;
+      }
+      tbody.innerHTML = tickets.map(t => {
+        const prefixClass = t.prefix === 'QA' ? 'pb-qa' : 'pb-tc';
+        const badgeClass = statusBadgeClass[t.status] || '';
+        const dueDisplay = t.dueDate ? t.dueDate.slice(2).replace(/-/g, '.') : '-';
+        // Remove prefix from summary for cleaner display
+        let cleanSummary = t.summary;
+        if (cleanSummary.startsWith('QA - ')) cleanSummary = cleanSummary.slice(5);
+        else if (cleanSummary.startsWith('TC - ')) cleanSummary = cleanSummary.slice(5);
+        else if (cleanSummary.startsWith('QA ')) cleanSummary = cleanSummary.slice(3);
+        else if (cleanSummary.startsWith('TC ')) cleanSummary = cleanSummary.slice(3);
+
+        return '<tr>' +
+          '<td><span class="prefix-badge ' + prefixClass + '">' + t.prefix + '</span></td>' +
+          '<td><a href="' + t.jiraUrl + '" target="_blank" class="jira-link">' + t.key + ' &#8599;</a></td>' +
+          '<td><span class="summary-text" title="' + t.summary.replace(/"/g, '&quot;') + '">' + cleanSummary.trim() + '</span></td>' +
+          '<td><span class="status-badge ' + badgeClass + '">' + t.status + '</span></td>' +
+          '<td>' + t.assignee + '</td>' +
+          '<td>' + dueDisplay + '</td>' +
+        '</tr>';
+      }).join('');
+    }
   </script>
 </body>
 </html>

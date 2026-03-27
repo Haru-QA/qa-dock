@@ -4,4 +4,4 @@ dist/
 .env.local
 *.log
 .DS_Store
-public/data.json
+# public/data.json - included for GitHub Pages
