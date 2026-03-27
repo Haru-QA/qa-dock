@@ -217,9 +217,8 @@
       margin-left: calc(1.2rem + 15px); /* align with center of num */
     }
 
-    /* Phase details area - match sidebar height, scroll */
+    /* Phase details area - scroll when taller than sidebar */
     .phase-details-area {
-      max-height: calc(6 * 72px);  /* approx sidebar height */
       overflow-y: auto;
     }
     .phase-details-area::-webkit-scrollbar { width: 6px; }
@@ -561,6 +560,10 @@
         document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         btn.classList.add('active');
         document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+        // sync height when switching to workflow tab
+        if (btn.dataset.tab === 'workflow') {
+          requestAnimationFrame(() => { syncHeight(); });
+        }
       });
     });
     // Phase switching
@@ -580,10 +583,12 @@
       const sidebar = document.querySelector('.phase-sidebar');
       const area = document.querySelector('.phase-details-area');
       if (sidebar && area) {
-        area.style.maxHeight = sidebar.offsetHeight + 'px';
+        const h = sidebar.offsetHeight;
+        area.style.maxHeight = h > 100 ? h + 'px' : 'none';
       }
     }
-    window.addEventListener('load', syncHeight);
+    // Run after layout is complete
+    requestAnimationFrame(() => { syncHeight(); });
     window.addEventListener('resize', syncHeight);
   </script>
 </body>
