@@ -1,0 +1,12 @@
+{
+  "name": "qa-dock",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "QA Dock - QA 팀 대시보드",
+  "scripts": {
+    "fetch": "node scripts/fetch-jira.js",
+    "deploy": "echo 'Deploy via GitHub Actions'"
+  },
+  "dependencies": {}
+}
