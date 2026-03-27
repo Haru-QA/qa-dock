@@ -17,7 +17,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1871",
       "parentKey": "GRIPPGM-2947",
       "pm": "이열매",
-      "bizPriority": "중"
+      "bizPriority": "중",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1868",
@@ -29,7 +31,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1868",
       "parentKey": "GRIPPGM-2949",
       "pm": "이열매",
-      "bizPriority": "중"
+      "bizPriority": "중",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1867",
@@ -41,7 +45,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1867",
       "parentKey": "GRIPPGM-2948",
       "pm": "이열매",
-      "bizPriority": "중"
+      "bizPriority": "중",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1866",
@@ -53,7 +59,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1866",
       "parentKey": "GRIPPGM-2947",
       "pm": "이열매",
-      "bizPriority": "중"
+      "bizPriority": "중",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1865",
@@ -65,7 +73,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1865",
       "parentKey": "GRIPPGM-2598",
       "pm": "박선영",
-      "bizPriority": "필수"
+      "bizPriority": "필수",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1864",
@@ -77,7 +87,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1864",
       "parentKey": "GRIPPGM-2598",
       "pm": "박선영",
-      "bizPriority": "필수"
+      "bizPriority": "필수",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1863",
@@ -89,7 +101,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1863",
       "parentKey": "GRIPPGM-2701",
       "pm": "장예나",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1862",
@@ -101,7 +115,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1862",
       "parentKey": "GRIPPGM-2701",
       "pm": "장예나",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1861",
@@ -113,7 +129,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1861",
       "parentKey": "GRIPPGM-2931",
       "pm": "이열매",
-      "bizPriority": "중"
+      "bizPriority": "중",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1860",
@@ -125,7 +143,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1860",
       "parentKey": "GRIPPGM-2967",
       "pm": "이열매",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1857",
@@ -137,7 +157,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1857",
       "parentKey": "GRIPPGM-2923",
       "pm": "장예나",
-      "bizPriority": "중"
+      "bizPriority": "중",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1856",
@@ -149,7 +171,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1856",
       "parentKey": "GRIPPGM-2701",
       "pm": "장예나",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1855",
@@ -161,7 +185,55 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1855",
       "parentKey": "GRIPPGM-2826",
       "pm": "장예나",
-      "bizPriority": "중"
+      "bizPriority": "중",
+      "bugCount": 5,
+      "bugs": [
+        {
+          "key": "GRIPSVR-9245",
+          "summary": "[비즈센터] 방송별 주문 취합 조회 > 일괄 발송 처리 실패 시, 알럿 문구 변경 작업",
+          "status": "대기 중",
+          "priority": "Major",
+          "assignee": "민지(서버)",
+          "parentEpicKey": "GRIPSVR-8543",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9245"
+        },
+        {
+          "key": "GRIPWEB-9002",
+          "summary": "[비즈센터] 발주/발송 관리 > 검색 조건 영역 UI 깨짐 현상",
+          "status": "완료됨",
+          "priority": "Minor",
+          "assignee": "낙선",
+          "parentEpicKey": "GRIPWEB-8739",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-9002"
+        },
+        {
+          "key": "GRIPSVR-9223",
+          "summary": "[비즈센터] 방송별 주문 취합 조회 > 방송 선택 > LIVE VOD 주문 내역 미노출됨",
+          "status": "완료됨",
+          "priority": "Major",
+          "assignee": "민지(서버)",
+          "parentEpicKey": "GRIPSVR-8543",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9223"
+        },
+        {
+          "key": "GRIPWEB-8986",
+          "summary": "[비즈센터] 그룹 계정(마스터) > 방송별 주문 취합 조회 > 주문 발주 확인 팝업 > 검색 조건 > 그룹 멤버 항목 미노출됨",
+          "status": "완료됨",
+          "priority": "Major",
+          "assignee": "낙선",
+          "parentEpicKey": "GRIPWEB-8739",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8986"
+        },
+        {
+          "key": "GRIPWEB-8982",
+          "summary": "[비즈센터] 방송별 주문 취합 조회 > 배송비 상품 검색 > 방송아이디, 방송 제목 데이터 미출력됨",
+          "status": "완료됨",
+          "priority": "Major",
+          "assignee": "낙선",
+          "parentEpicKey": "GRIPWEB-8739",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8982"
+        }
+      ]
     },
     {
       "key": "GRIPPE-1853",
@@ -173,7 +245,55 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1853",
       "parentKey": "GRIPPGM-2826",
       "pm": "장예나",
-      "bizPriority": "중"
+      "bizPriority": "중",
+      "bugCount": 5,
+      "bugs": [
+        {
+          "key": "GRIPSVR-9245",
+          "summary": "[비즈센터] 방송별 주문 취합 조회 > 일괄 발송 처리 실패 시, 알럿 문구 변경 작업",
+          "status": "대기 중",
+          "priority": "Major",
+          "assignee": "민지(서버)",
+          "parentEpicKey": "GRIPSVR-8543",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9245"
+        },
+        {
+          "key": "GRIPWEB-9002",
+          "summary": "[비즈센터] 발주/발송 관리 > 검색 조건 영역 UI 깨짐 현상",
+          "status": "완료됨",
+          "priority": "Minor",
+          "assignee": "낙선",
+          "parentEpicKey": "GRIPWEB-8739",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-9002"
+        },
+        {
+          "key": "GRIPSVR-9223",
+          "summary": "[비즈센터] 방송별 주문 취합 조회 > 방송 선택 > LIVE VOD 주문 내역 미노출됨",
+          "status": "완료됨",
+          "priority": "Major",
+          "assignee": "민지(서버)",
+          "parentEpicKey": "GRIPSVR-8543",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9223"
+        },
+        {
+          "key": "GRIPWEB-8986",
+          "summary": "[비즈센터] 그룹 계정(마스터) > 방송별 주문 취합 조회 > 주문 발주 확인 팝업 > 검색 조건 > 그룹 멤버 항목 미노출됨",
+          "status": "완료됨",
+          "priority": "Major",
+          "assignee": "낙선",
+          "parentEpicKey": "GRIPWEB-8739",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8986"
+        },
+        {
+          "key": "GRIPWEB-8982",
+          "summary": "[비즈센터] 방송별 주문 취합 조회 > 배송비 상품 검색 > 방송아이디, 방송 제목 데이터 미출력됨",
+          "status": "완료됨",
+          "priority": "Major",
+          "assignee": "낙선",
+          "parentEpicKey": "GRIPWEB-8739",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8982"
+        }
+      ]
     },
     {
       "key": "GRIPPE-1852",
@@ -185,7 +305,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1852",
       "parentKey": "GRIPPGM-2701",
       "pm": "장예나",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1851",
@@ -197,7 +319,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1851",
       "parentKey": "GRIPPGM-2885",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1850",
@@ -209,7 +333,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1850",
       "parentKey": "GRIPPGM-2885",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1849",
@@ -221,7 +347,82 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1849",
       "parentKey": "GRIPPGM-2744",
       "pm": "이열매",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 8,
+      "bugs": [
+        {
+          "key": "GRIPSVR-9235",
+          "summary": "배송비 전용 상품의 기본 배송비 = 0원 경우, 첫번째 라이브 주문서에 자동 리스팅되지 않는 현상",
+          "status": "QA 중",
+          "priority": "Major",
+          "assignee": "여비",
+          "parentEpicKey": "GRIPSVR-8504",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9235"
+        },
+        {
+          "key": "GRIPSVR-9225",
+          "summary": "주문서 생성 시, 배송비 상품 담겨있는 경우 오류",
+          "status": "QA 중",
+          "priority": "Blocker",
+          "assignee": "민지(서버)",
+          "parentEpicKey": "GRIPSVR-8503",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9225"
+        },
+        {
+          "key": "GRIPSVR-9221",
+          "summary": "라이브 주문서 및 주문서에서 배송비 상품 추가되었지만 배송비 금액 0원 처리되는 현상",
+          "status": "대기 중",
+          "priority": "Critical",
+          "assignee": "카니",
+          "parentEpicKey": "GRIPSVR-8503",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9221"
+        },
+        {
+          "key": "GRIPSVR-9220",
+          "summary": "[비즈니스센터] 라이브 방송 상품 설정 상품 추가 팝업에서 현재 판매중인 상품 포함되어 노출되는 현상",
+          "status": "완료됨",
+          "priority": "Minor",
+          "assignee": "여비",
+          "parentEpicKey": "GRIPSVR-8504",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9220"
+        },
+        {
+          "key": "GRIPSVR-9218",
+          "summary": "[방송폰] 배송비 상품 스토어 ON 으로 디폴트 설정 안되는 현상",
+          "status": "QA 중",
+          "priority": "Major",
+          "assignee": "여비",
+          "parentEpicKey": "GRIPSVR-8504",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9218"
+        },
+        {
+          "key": "GRIPSVR-9214",
+          "summary": "[어드민] 일반 상품/플래시 상품 배송비 전용 상품으로 수정 시도 시, 변경 안되는 현상",
+          "status": "QA 중",
+          "priority": "Blocker",
+          "assignee": "여비",
+          "parentEpicKey": "GRIPSVR-8504",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9214"
+        },
+        {
+          "key": "GRIPSVR-9211",
+          "summary": "[비즈니스센터] 플래시 상품 수정 상세에서 배송비 전용 상품으로 변경 시도 시, 판매 기간 오류 얼럿 발생",
+          "status": "QA 중",
+          "priority": "Major",
+          "assignee": "여비",
+          "parentEpicKey": "GRIPSVR-8504",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9211"
+        },
+        {
+          "key": "GRIPSVR-9210",
+          "summary": "[비즈니스센터] 플래시 상품 간편 등록 관리에서 배송비 상품 복사 시, 배송비 전용 상품값 'Y' 로 복사되는 현상",
+          "status": "완료됨",
+          "priority": "Major",
+          "assignee": "여비",
+          "parentEpicKey": "GRIPSVR-8504",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9210"
+        }
+      ]
     },
     {
       "key": "GRIPPE-1848",
@@ -233,7 +434,82 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1848",
       "parentKey": "GRIPPGM-2744",
       "pm": "이열매",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 8,
+      "bugs": [
+        {
+          "key": "GRIPSVR-9235",
+          "summary": "배송비 전용 상품의 기본 배송비 = 0원 경우, 첫번째 라이브 주문서에 자동 리스팅되지 않는 현상",
+          "status": "QA 중",
+          "priority": "Major",
+          "assignee": "여비",
+          "parentEpicKey": "GRIPSVR-8504",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9235"
+        },
+        {
+          "key": "GRIPSVR-9225",
+          "summary": "주문서 생성 시, 배송비 상품 담겨있는 경우 오류",
+          "status": "QA 중",
+          "priority": "Blocker",
+          "assignee": "민지(서버)",
+          "parentEpicKey": "GRIPSVR-8503",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9225"
+        },
+        {
+          "key": "GRIPSVR-9221",
+          "summary": "라이브 주문서 및 주문서에서 배송비 상품 추가되었지만 배송비 금액 0원 처리되는 현상",
+          "status": "대기 중",
+          "priority": "Critical",
+          "assignee": "카니",
+          "parentEpicKey": "GRIPSVR-8503",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9221"
+        },
+        {
+          "key": "GRIPSVR-9220",
+          "summary": "[비즈니스센터] 라이브 방송 상품 설정 상품 추가 팝업에서 현재 판매중인 상품 포함되어 노출되는 현상",
+          "status": "완료됨",
+          "priority": "Minor",
+          "assignee": "여비",
+          "parentEpicKey": "GRIPSVR-8504",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9220"
+        },
+        {
+          "key": "GRIPSVR-9218",
+          "summary": "[방송폰] 배송비 상품 스토어 ON 으로 디폴트 설정 안되는 현상",
+          "status": "QA 중",
+          "priority": "Major",
+          "assignee": "여비",
+          "parentEpicKey": "GRIPSVR-8504",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9218"
+        },
+        {
+          "key": "GRIPSVR-9214",
+          "summary": "[어드민] 일반 상품/플래시 상품 배송비 전용 상품으로 수정 시도 시, 변경 안되는 현상",
+          "status": "QA 중",
+          "priority": "Blocker",
+          "assignee": "여비",
+          "parentEpicKey": "GRIPSVR-8504",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9214"
+        },
+        {
+          "key": "GRIPSVR-9211",
+          "summary": "[비즈니스센터] 플래시 상품 수정 상세에서 배송비 전용 상품으로 변경 시도 시, 판매 기간 오류 얼럿 발생",
+          "status": "QA 중",
+          "priority": "Major",
+          "assignee": "여비",
+          "parentEpicKey": "GRIPSVR-8504",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9211"
+        },
+        {
+          "key": "GRIPSVR-9210",
+          "summary": "[비즈니스센터] 플래시 상품 간편 등록 관리에서 배송비 상품 복사 시, 배송비 전용 상품값 'Y' 로 복사되는 현상",
+          "status": "완료됨",
+          "priority": "Major",
+          "assignee": "여비",
+          "parentEpicKey": "GRIPSVR-8504",
+          "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9210"
+        }
+      ]
     },
     {
       "key": "GRIPPE-1847",
@@ -245,7 +521,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1847",
       "parentKey": "GRIPPGM-2875",
       "pm": "이열매 박선영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1846",
@@ -257,7 +535,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1846",
       "parentKey": "GRIPPGM-2875",
       "pm": "이열매 박선영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1843",
@@ -269,7 +549,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1843",
       "parentKey": "GRIPPGM-2729",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1842",
@@ -281,7 +563,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1842",
       "parentKey": "GRIPPGM-2729",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1841",
@@ -293,7 +577,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1841",
       "parentKey": "GRIPPGM-2729",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1839",
@@ -305,7 +591,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1839",
       "parentKey": "GRIPPGM-2529",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1838",
@@ -317,7 +605,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1838",
       "parentKey": "GRIPPGM-2195",
       "pm": "이미영",
-      "bizPriority": "중"
+      "bizPriority": "중",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1837",
@@ -329,7 +619,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1837",
       "parentKey": "GRIPPGM-2769",
       "pm": "김연화clooney 클루니",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1833",
@@ -341,7 +633,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1833",
       "parentKey": "GRIPPGM-2769",
       "pm": "김연화clooney 클루니",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1830",
@@ -353,7 +647,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1830",
       "parentKey": "GRIPPGM-2725",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1829",
@@ -365,7 +661,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1829",
       "parentKey": "GRIPPGM-2725",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1828",
@@ -377,7 +675,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1828",
       "parentKey": "GRIPPGM-2725",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1827",
@@ -389,7 +689,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1827",
       "parentKey": "GRIPPGM-2626",
       "pm": "이열매 박선영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1826",
@@ -401,7 +703,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1826",
       "parentKey": "GRIPPGM-2626",
       "pm": "이열매 박선영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1825",
@@ -413,7 +717,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1825",
       "parentKey": "GRIPPGM-2726",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1823",
@@ -425,7 +731,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1823",
       "parentKey": "GRIPPGM-2596",
       "pm": "정유선",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1822",
@@ -437,7 +745,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1822",
       "parentKey": "GRIPPGM-2718",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1821",
@@ -449,7 +759,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1821",
       "parentKey": "GRIPPGM-2718",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1820",
@@ -461,7 +773,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1820",
       "parentKey": "GRIPPGM-2656",
       "pm": "박선영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1819",
@@ -473,7 +787,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1819",
       "parentKey": "GRIPPGM-2597",
       "pm": "정유선",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1818",
@@ -485,7 +801,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1818",
       "parentKey": "GRIPPGM-2626",
       "pm": "이열매 박선영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1814",
@@ -497,7 +815,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1814",
       "parentKey": "GRIPPGM-2687",
       "pm": "김연화clooney 클루니",
-      "bizPriority": "필수"
+      "bizPriority": "필수",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1810",
@@ -509,7 +829,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1810",
       "parentKey": "GRIPPGM-2596",
       "pm": "정유선",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1809",
@@ -521,7 +843,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1809",
       "parentKey": "GRIPPGM-2626",
       "pm": "이열매 박선영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1806",
@@ -533,7 +857,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1806",
       "parentKey": "GRIPPGM-2615",
       "pm": "정유선",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1804",
@@ -545,7 +871,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1804",
       "parentKey": "GRIPPGM-2597",
       "pm": "정유선",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1801",
@@ -557,7 +885,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1801",
       "parentKey": "GRIPPGM-2687",
       "pm": "김연화clooney 클루니",
-      "bizPriority": "필수"
+      "bizPriority": "필수",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1799",
@@ -569,7 +899,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1799",
       "parentKey": "GRIPPGM-2656",
       "pm": "박선영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1798",
@@ -581,7 +913,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1798",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1794",
@@ -593,7 +927,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1794",
       "parentKey": "GRIPPGM-2503",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1793",
@@ -605,7 +941,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1793",
       "parentKey": "GRIPPGM-2503",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1792",
@@ -617,7 +955,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1792",
       "parentKey": "GRIPPGM-2469",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1791",
@@ -629,7 +969,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1791",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1790",
@@ -641,7 +983,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1790",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1789",
@@ -653,7 +997,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1789",
       "parentKey": "GRIPPGM-2525",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1786",
@@ -665,7 +1011,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1786",
       "parentKey": "GRIPPGM-2508",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1784",
@@ -677,7 +1025,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1784",
       "parentKey": "GRIPPGM-2516",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1783",
@@ -689,7 +1039,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1783",
       "parentKey": "GRIPPGM-2255",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1781",
@@ -701,7 +1053,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1781",
       "parentKey": "GRIPPGM-2255",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1779",
@@ -713,7 +1067,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1779",
       "parentKey": "GRIPPGM-2493",
       "pm": "김연화clooney 클루니",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1778",
@@ -725,7 +1081,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1778",
       "parentKey": "GRIPPGM-2505",
       "pm": "김연화clooney 클루니",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1777",
@@ -737,7 +1095,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1777",
       "parentKey": "GRIPPGM-2508",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1776",
@@ -749,7 +1109,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1776",
       "parentKey": "GRIPPGM-2507",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1775",
@@ -761,7 +1123,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1775",
       "parentKey": "GRIPPGM-2504",
       "pm": "박선영",
-      "bizPriority": "필수"
+      "bizPriority": "필수",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1773",
@@ -773,7 +1137,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1773",
       "parentKey": "GRIPPGM-2499",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1772",
@@ -785,7 +1151,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1772",
       "parentKey": "GRIPPGM-2255",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1771",
@@ -797,7 +1165,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1771",
       "parentKey": "GRIPPGM-2255",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1770",
@@ -809,7 +1179,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1770",
       "parentKey": "GRIPPGM-2488",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1769",
@@ -821,7 +1193,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1769",
       "parentKey": "GRIPPGM-2488",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1768",
@@ -833,7 +1207,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1768",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1766",
@@ -845,7 +1221,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1766",
       "parentKey": "GRIPPGM-2480",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1765",
@@ -857,7 +1235,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1765",
       "parentKey": "GRIPPGM-2353",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1764",
@@ -869,7 +1249,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1764",
       "parentKey": "GRIPPGM-2414",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1760",
@@ -881,7 +1263,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1760",
       "parentKey": "GRIPPGM-2481",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1758",
@@ -893,7 +1277,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1758",
       "parentKey": "GRIPPGM-2468",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1757",
@@ -905,7 +1291,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1757",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1756",
@@ -917,7 +1305,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1756",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1755",
@@ -929,7 +1319,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1755",
       "parentKey": "GRIPPGM-2481",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1752",
@@ -941,7 +1333,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1752",
       "parentKey": "GRIPPGM-2414",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1751",
@@ -953,7 +1347,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1751",
       "parentKey": "GRIPPGM-2440",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1747",
@@ -965,7 +1361,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1747",
       "parentKey": "GRIPPGM-1944",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1746",
@@ -977,7 +1375,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1746",
       "parentKey": "GRIPPGM-2440",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1744",
@@ -989,7 +1389,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1744",
       "parentKey": "GRIPPGM-2372",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1742",
@@ -1001,7 +1403,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1742",
       "parentKey": "GRIPPGM-2172",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1739",
@@ -1013,7 +1417,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1739",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1738",
@@ -1025,7 +1431,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1738",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1737",
@@ -1037,7 +1445,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1737",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1734",
@@ -1049,7 +1459,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1734",
       "parentKey": "GRIPPGM-1861",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1733",
@@ -1061,7 +1473,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1733",
       "parentKey": "GRIPPGM-1861",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1732",
@@ -1073,7 +1487,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1732",
       "parentKey": "GRIPPGM-1904",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1731",
@@ -1085,7 +1501,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1731",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1730",
@@ -1097,7 +1515,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1730",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1727",
@@ -1109,7 +1529,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1727",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1724",
@@ -1121,7 +1543,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1724",
       "parentKey": "GRIPPGM-2347",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1723",
@@ -1133,7 +1557,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1723",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1722",
@@ -1145,7 +1571,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1722",
       "parentKey": "",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1721",
@@ -1157,7 +1585,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1721",
       "parentKey": "GRIPPGM-1912",
       "pm": "-",
-      "bizPriority": "-"
+      "bizPriority": "-",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1719",
@@ -1169,7 +1599,9 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1719",
       "parentKey": "GRIPPGM-1861",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
     },
     {
       "key": "GRIPPE-1718",
@@ -1181,7 +1613,300 @@
       "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPPE-1718",
       "parentKey": "GRIPPGM-1861",
       "pm": "이미영",
-      "bizPriority": "상"
+      "bizPriority": "상",
+      "bugCount": 0,
+      "bugs": []
+    }
+  ],
+  "bugSummary": {
+    "total": 30,
+    "open": 6,
+    "inProgress": 9,
+    "resolved": 15,
+    "byStatus": {
+      "대기 중": 6,
+      "완료됨": 15,
+      "QA 중": 8,
+      "리뷰 중": 1
+    },
+    "byPriority": {
+      "Major": 21,
+      "Minor": 5,
+      "Blocker": 2,
+      "Critical": 1,
+      "Trivial": 1
+    }
+  },
+  "bugs": [
+    {
+      "key": "GRIPSVR-9245",
+      "summary": "[비즈센터] 방송별 주문 취합 조회 > 일괄 발송 처리 실패 시, 알럿 문구 변경 작업",
+      "status": "대기 중",
+      "priority": "Major",
+      "assignee": "민지(서버)",
+      "parentEpicKey": "GRIPSVR-8543",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9245"
+    },
+    {
+      "key": "GRIPSVR-9239",
+      "summary": "[정산] OVERWRITE 유형 정산 진행 시, 매칭정산 데이터 초기화되지 않는 이슈 수정",
+      "status": "대기 중",
+      "priority": "Major",
+      "assignee": "용호",
+      "parentEpicKey": "GRIPSVR-3072",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9239"
+    },
+    {
+      "key": "GRIPWEB-9002",
+      "summary": "[비즈센터] 발주/발송 관리 > 검색 조건 영역 UI 깨짐 현상",
+      "status": "완료됨",
+      "priority": "Minor",
+      "assignee": "낙선",
+      "parentEpicKey": "GRIPWEB-8739",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-9002"
+    },
+    {
+      "key": "GRIPSVR-9235",
+      "summary": "배송비 전용 상품의 기본 배송비 = 0원 경우, 첫번째 라이브 주문서에 자동 리스팅되지 않는 현상",
+      "status": "QA 중",
+      "priority": "Major",
+      "assignee": "여비",
+      "parentEpicKey": "GRIPSVR-8504",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9235"
+    },
+    {
+      "key": "GRIPIOS-4950",
+      "summary": "[방송] 로그아웃 후 다른 계정으로 로그인 시 웹뷰에서 기존 사용자 정보 노출",
+      "status": "QA 중",
+      "priority": "Major",
+      "assignee": "성찬",
+      "parentEpicKey": "",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPIOS-4950"
+    },
+    {
+      "key": "GRIPSVR-9226",
+      "summary": "[비즈니스센터] 라이브 방송 상품 설정에서 상품명 검색 시, 500에러 발생",
+      "status": "완료됨",
+      "priority": "Major",
+      "assignee": "여비",
+      "parentEpicKey": "GRIPSVR-3061",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9226"
+    },
+    {
+      "key": "GRIPIOS-4949",
+      "summary": "[IVS] 영상 첨부 후 1시간 이상 송출 시, 간헐적으로 영상/사운드 싱크 안맞는 현상 발생",
+      "status": "대기 중",
+      "priority": "Minor",
+      "assignee": "성준",
+      "parentEpicKey": "GRIPIOS-2885",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPIOS-4949"
+    },
+    {
+      "key": "GRIPSVR-9225",
+      "summary": "주문서 생성 시, 배송비 상품 담겨있는 경우 오류",
+      "status": "QA 중",
+      "priority": "Blocker",
+      "assignee": "민지(서버)",
+      "parentEpicKey": "GRIPSVR-8503",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9225"
+    },
+    {
+      "key": "GRIPSVR-9223",
+      "summary": "[비즈센터] 방송별 주문 취합 조회 > 방송 선택 > LIVE VOD 주문 내역 미노출됨",
+      "status": "완료됨",
+      "priority": "Major",
+      "assignee": "민지(서버)",
+      "parentEpicKey": "GRIPSVR-8543",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9223"
+    },
+    {
+      "key": "GRIPAND-6827",
+      "summary": "[디자인] 아이콘 디자인 수정",
+      "status": "리뷰 중",
+      "priority": "Major",
+      "assignee": "기웅",
+      "parentEpicKey": "GRIPAND-6806",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPAND-6827"
+    },
+    {
+      "key": "GRIPSVR-9221",
+      "summary": "라이브 주문서 및 주문서에서 배송비 상품 추가되었지만 배송비 금액 0원 처리되는 현상",
+      "status": "대기 중",
+      "priority": "Critical",
+      "assignee": "카니",
+      "parentEpicKey": "GRIPSVR-8503",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9221"
+    },
+    {
+      "key": "GRIPWEB-8987",
+      "summary": "[비즈니스센터] 플래시 상품 배송지 상품의 경우 판매 기간 max 로 설정되지 않는 현상",
+      "status": "대기 중",
+      "priority": "Major",
+      "assignee": "재석",
+      "parentEpicKey": "GRIPWEB-8661",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8987"
+    },
+    {
+      "key": "GRIPSVR-9220",
+      "summary": "[비즈니스센터] 라이브 방송 상품 설정 상품 추가 팝업에서 현재 판매중인 상품 포함되어 노출되는 현상",
+      "status": "완료됨",
+      "priority": "Minor",
+      "assignee": "여비",
+      "parentEpicKey": "GRIPSVR-8504",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9220"
+    },
+    {
+      "key": "GRIPSVR-9219",
+      "summary": "[방송폰] 한정 판매 상품 바텀 시트의 판매 가능 텍스트 긴 경우 개선",
+      "status": "QA 중",
+      "priority": "Major",
+      "assignee": "경우",
+      "parentEpicKey": "GRIPSVR-6815",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9219"
+    },
+    {
+      "key": "GRIPSVR-9218",
+      "summary": "[방송폰] 배송비 상품 스토어 ON 으로 디폴트 설정 안되는 현상",
+      "status": "QA 중",
+      "priority": "Major",
+      "assignee": "여비",
+      "parentEpicKey": "GRIPSVR-8504",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9218"
+    },
+    {
+      "key": "GRIPWEB-8986",
+      "summary": "[비즈센터] 그룹 계정(마스터) > 방송별 주문 취합 조회 > 주문 발주 확인 팝업 > 검색 조건 > 그룹 멤버 항목 미노출됨",
+      "status": "완료됨",
+      "priority": "Major",
+      "assignee": "낙선",
+      "parentEpicKey": "GRIPWEB-8739",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8986"
+    },
+    {
+      "key": "GRIPIOS-4947",
+      "summary": "[IVS][송출] 송출 비트레이트 회복 설정값을 default에서 fast로 수정",
+      "status": "완료됨",
+      "priority": "Major",
+      "assignee": "성준",
+      "parentEpicKey": "",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPIOS-4947"
+    },
+    {
+      "key": "GRIPIOS-4946",
+      "summary": "[IVS][송출] 방송 송출시 오디오 끊김 이슈 수정",
+      "status": "완료됨",
+      "priority": "Major",
+      "assignee": "성준",
+      "parentEpicKey": "",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPIOS-4946"
+    },
+    {
+      "key": "GRIPWEB-8985",
+      "summary": "[기획QA] 설명 영역 토글 default open 처리",
+      "status": "QA 중",
+      "priority": "Major",
+      "assignee": "낙선",
+      "parentEpicKey": "",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8985"
+    },
+    {
+      "key": "GRIPWEB-8984",
+      "summary": "[어드민 2.0] 최소/최대 구매 수량 제한된 상품 수정 상세에서 수정 시도 시, ‘최대 구매수량은 최소 구매수량보다 커야 합니다’ 얼럿 노출",
+      "status": "완료됨",
+      "priority": "Major",
+      "assignee": "낙선",
+      "parentEpicKey": "GRIPWEB-4818",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8984"
+    },
+    {
+      "key": "GRIPWEB-8983",
+      "summary": "[비즈니스센터] 일반 배송비 상품 수정 상세 최초 진입 시, 판매 기간 기존 설정값으로 선택 안되어 있는 현상",
+      "status": "완료됨",
+      "priority": "Minor",
+      "assignee": "재석",
+      "parentEpicKey": "GRIPWEB-8661",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8983"
+    },
+    {
+      "key": "GRIPWEB-8982",
+      "summary": "[비즈센터] 방송별 주문 취합 조회 > 배송비 상품 검색 > 방송아이디, 방송 제목 데이터 미출력됨",
+      "status": "완료됨",
+      "priority": "Major",
+      "assignee": "낙선",
+      "parentEpicKey": "GRIPWEB-8739",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8982"
+    },
+    {
+      "key": "GRIPWEB-8981",
+      "summary": "iOS 모웹에서 라이브 주문서/장바구니 담기 직후 방송 화면 멈춤 현상 발생",
+      "status": "대기 중",
+      "priority": "Major",
+      "assignee": "재석",
+      "parentEpicKey": "GRIPWEB-4816",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8981"
+    },
+    {
+      "key": "GRIPSVR-9216",
+      "summary": "그립 어드민 2.0 판매자 정보 조회 로딩 시간 개선 요청",
+      "status": "완료됨",
+      "priority": "Major",
+      "assignee": "용현",
+      "parentEpicKey": "GRIPSVR-8107",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9216"
+    },
+    {
+      "key": "GRIPSVR-9214",
+      "summary": "[어드민] 일반 상품/플래시 상품 배송비 전용 상품으로 수정 시도 시, 변경 안되는 현상",
+      "status": "QA 중",
+      "priority": "Blocker",
+      "assignee": "여비",
+      "parentEpicKey": "GRIPSVR-8504",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9214"
+    },
+    {
+      "key": "GRIPWEB-8980",
+      "summary": "[비즈니스센터] 발주/발송 관리에서 '방송명' 컬럼명 기획과 상이하게 표기",
+      "status": "완료됨",
+      "priority": "Trivial",
+      "assignee": "재석",
+      "parentEpicKey": "GRIPWEB-8661",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8980"
+    },
+    {
+      "key": "GRIPWEB-8978",
+      "summary": "[비즈니스센터] 매칭받은 상품 목록에서 배송비 전용 상품 데이터 '가능' 으로 표기되는 현상",
+      "status": "완료됨",
+      "priority": "Major",
+      "assignee": "재석",
+      "parentEpicKey": "GRIPWEB-8661",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8978"
+    },
+    {
+      "key": "GRIPSVR-9211",
+      "summary": "[비즈니스센터] 플래시 상품 수정 상세에서 배송비 전용 상품으로 변경 시도 시, 판매 기간 오류 얼럿 발생",
+      "status": "QA 중",
+      "priority": "Major",
+      "assignee": "여비",
+      "parentEpicKey": "GRIPSVR-8504",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9211"
+    },
+    {
+      "key": "GRIPSVR-9210",
+      "summary": "[비즈니스센터] 플래시 상품 간편 등록 관리에서 배송비 상품 복사 시, 배송비 전용 상품값 'Y' 로 복사되는 현상",
+      "status": "완료됨",
+      "priority": "Major",
+      "assignee": "여비",
+      "parentEpicKey": "GRIPSVR-8504",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPSVR-9210"
+    },
+    {
+      "key": "GRIPWEB-8977",
+      "summary": "[디자인 QA] my탭,라이브 주문서 디자인 일부 수정",
+      "status": "완료됨",
+      "priority": "Minor",
+      "assignee": "재석",
+      "parentEpicKey": "GRIPWEB-8695",
+      "jiraUrl": "https://gripcorp.atlassian.net/browse/GRIPWEB-8977"
     }
   ]
 }
