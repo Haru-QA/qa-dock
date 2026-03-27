@@ -90,6 +90,83 @@
       border-radius: 50%; background: var(--green); margin-right: 6px;
     }
 
+    /* ── Dashboard layout ── */
+    .dash-layout {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+    .dash-group-sidebar {
+      display: flex; flex-direction: column; gap: 0;
+      position: sticky; top: 72px;
+    }
+    .dg-card {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.9rem 1rem;
+      background: rgba(30,41,59,0.3);
+      border: 1px solid rgba(51,65,85,0.5);
+      border-bottom: none;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .dg-card:first-child { border-radius: 10px 10px 0 0; }
+    .dg-card:last-child { border-bottom: 1px solid rgba(51,65,85,0.5); border-radius: 0 0 10px 10px; }
+    .dg-card:hover { background: rgba(59,130,246,0.05); }
+    .dg-card.active {
+      background: rgba(59,130,246,0.08);
+      border-color: var(--blue);
+      border-bottom: 1px solid var(--blue);
+      z-index: 1; position: relative;
+    }
+    .dg-card.active + .dg-card { border-top-color: var(--blue); }
+    .dg-icon { font-size: 1rem; width: 24px; text-align: center; color: var(--text-muted); }
+    .dg-card.active .dg-icon { color: var(--blue); }
+    .dg-label { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+    .dg-card.active .dg-label { color: var(--blue); }
+
+    .dash-content-area {
+      min-height: 200px;
+    }
+    .dash-content-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 0.8rem;
+    }
+    .dash-pagination {
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .dash-pagination button {
+      background: var(--bg2); border: 1px solid var(--bg3); color: var(--text-dim);
+      padding: 0.3rem 0.7rem; border-radius: 5px; cursor: pointer;
+      font-size: 0.78rem; transition: all 0.15s;
+    }
+    .dash-pagination button:hover { color: var(--text); border-color: var(--border); }
+    .dash-pagination button.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .dash-pagination button:disabled { opacity: 0.3; cursor: default; }
+    .dash-pagination span {
+      font-size: 0.78rem; color: var(--text-muted); padding: 0 0.3rem;
+    }
+
+    /* Group section */
+    .group-section {
+      background: var(--bg2); border: 1px solid var(--bg3);
+      border-radius: 10px; padding: 1.2rem; margin-bottom: 1rem;
+    }
+    .group-section-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 0.8rem; cursor: pointer;
+    }
+    .group-section-title {
+      font-size: 0.95rem; font-weight: 700;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .group-count {
+      background: var(--bg3); color: var(--text-dim);
+      padding: 1px 8px; border-radius: 10px; font-size: 0.72rem; font-weight: 700;
+    }
+    .group-toggle { color: var(--text-muted); font-size: 0.9rem; transition: transform 0.2s; }
+    .group-section.collapsed .group-toggle { transform: rotate(-90deg); }
+    .group-section.collapsed .group-table { display: none; }
+
     .board-card.active-stage {
       box-shadow: 0 0 0 2px #fff, 0 4px 20px rgba(0,0,0,0.3);
       transform: translateY(-2px);
@@ -364,33 +441,37 @@
       <div class="board-card card-done" data-stage="done" onclick="filterByStage('done')"><div class="count" id="cnt-done">-</div><div class="label">완료</div></div>
       <div class="board-card" style="background:rgba(148,163,184,0.08);border:1px solid var(--text-muted);color:var(--text-dim);" data-stage="all" onclick="filterByStage('all')"><div class="count" id="cnt-all">-</div><div class="label">전체</div></div>
     </div>
-    <div id="dash-table-area" style="margin-top:1.5rem;display:none;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem;">
-        <h3 id="dash-table-title" style="font-size:1rem;font-weight:700;"></h3>
-        <div style="display:flex;gap:0.5rem;">
-          <select id="filter-prefix" onchange="applyFilters()" style="background:var(--bg2);color:var(--text);border:1px solid var(--bg3);border-radius:6px;padding:0.3rem 0.6rem;font-size:0.8rem;">
-            <option value="all">전체 (QA+TC)</option>
-            <option value="QA">QA만</option>
-            <option value="TC">TC만</option>
-          </select>
-          <select id="filter-assignee" onchange="applyFilters()" style="background:var(--bg2);color:var(--text);border:1px solid var(--bg3);border-radius:6px;padding:0.3rem 0.6rem;font-size:0.8rem;">
-            <option value="all">담당자 전체</option>
-          </select>
+    <!-- Group sidebar + Content area -->
+    <div id="dash-main" style="display:none;margin-top:1.5rem;">
+      <div class="dash-layout">
+        <!-- Left: Group sidebar -->
+        <div class="dash-group-sidebar">
+          <div class="dg-card active" data-group="all" onclick="switchGroup('all')">
+            <div class="dg-icon">&#9776;</div>
+            <div class="dg-label">전체 목록</div>
+          </div>
+          <div class="dg-card" data-group="byPrefix" onclick="switchGroup('byPrefix')">
+            <div class="dg-icon">&#9654;</div>
+            <div class="dg-label">유형별 (QA/TC)</div>
+          </div>
+          <div class="dg-card" data-group="byStatus" onclick="switchGroup('byStatus')">
+            <div class="dg-icon">&#9679;</div>
+            <div class="dg-label">상태별</div>
+          </div>
+          <div class="dg-card" data-group="byAssignee" onclick="switchGroup('byAssignee')">
+            <div class="dg-icon">&#9775;</div>
+            <div class="dg-label">담당자별</div>
+          </div>
+        </div>
+        <!-- Right: Content area with pagination -->
+        <div class="dash-content-area">
+          <div class="dash-content-header">
+            <h3 id="dash-content-title" style="font-size:1rem;font-weight:700;"></h3>
+            <div id="dash-pagination" class="dash-pagination"></div>
+          </div>
+          <div id="dash-content-body"></div>
         </div>
       </div>
-      <table class="step-table" id="dash-table">
-        <thead>
-          <tr>
-            <th style="width:50px">유형</th>
-            <th style="width:110px">티켓</th>
-            <th>과제명</th>
-            <th style="width:80px;cursor:pointer;" onclick="sortTable('status')">상태 &#8597;</th>
-            <th style="width:80px;cursor:pointer;" onclick="sortTable('assignee')">담당 &#8597;</th>
-            <th style="width:80px;cursor:pointer;" onclick="sortTable('dueDate')">목표일 &#8597;</th>
-          </tr>
-        </thead>
-        <tbody id="dash-tbody"></tbody>
-      </table>
     </div>
     <div id="dash-empty" class="status-bar" style="margin-top:1rem;">
       <span class="dot"></span> 카드를 클릭하면 상세 리스트가 표시됩니다
@@ -652,29 +733,22 @@
     // ══════════════════════════════════════
     let dashData = null;
     let currentStage = null;
-    let sortKey = null;
-    let sortAsc = true;
+    let currentGroup = 'all';
+    let currentPage = 1;
+    const PAGE_SIZE = 20;
 
-    const stageMap = {
-      '대기 중': 'waiting',
-      '개발 중': 'in_progress',
-      '완료됨': 'done'
-    };
+    const stageMap = { '대기 중': 'waiting', '개발 중': 'in_progress', '완료됨': 'done' };
     const stageLabels = { waiting: '대기 중', in_progress: '진행 중', done: '완료', all: '전체' };
     const statusBadgeClass = { '대기 중': 'sb-waiting', '개발 중': 'sb-inprogress', '완료됨': 'sb-done' };
 
-    // Load data.json
     fetch('data.json?t=' + Date.now())
       .then(r => r.json())
       .then(data => {
         dashData = data;
         renderSummary();
-        populateAssigneeFilter();
-        document.getElementById('dash-updated').textContent =
-          new Date(data.lastUpdated).toLocaleString('ko-KR', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
-        document.querySelector('.header-right').innerHTML =
-          '1440px 해상도 최적화 &nbsp;|&nbsp; Last updated: ' +
-          new Date(data.lastUpdated).toLocaleString('ko-KR', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+        const ts = new Date(data.lastUpdated).toLocaleString('ko-KR', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+        document.getElementById('dash-updated').textContent = ts;
+        document.querySelector('.header-right').innerHTML = '1440px 해상도 최적화 &nbsp;|&nbsp; Last updated: ' + ts;
       })
       .catch(() => {
         document.getElementById('dash-empty').innerHTML = '<span style="color:var(--red);">data.json 로드 실패</span>';
@@ -689,94 +763,142 @@
       document.getElementById('dash-total').textContent = s.total;
     }
 
-    function populateAssigneeFilter() {
-      const assignees = [...new Set(dashData.tickets.map(t => t.assignee))].filter(a => a !== '-').sort();
-      const sel = document.getElementById('filter-assignee');
-      assignees.forEach(a => {
-        const opt = document.createElement('option');
-        opt.value = a; opt.textContent = a;
-        sel.appendChild(opt);
-      });
+    function getFilteredTickets() {
+      if (!dashData) return [];
+      let tickets = dashData.tickets;
+      if (currentStage !== 'all') {
+        tickets = tickets.filter(t => stageMap[t.status] === currentStage);
+      }
+      return tickets;
     }
 
     function filterByStage(stage) {
       currentStage = stage;
-      // Highlight active card
+      currentPage = 1;
       document.querySelectorAll('.board-card').forEach(c => c.classList.remove('active-stage'));
       const card = document.querySelector('.board-card[data-stage="' + stage + '"]');
       if (card) card.classList.add('active-stage');
-
-      document.getElementById('dash-table-area').style.display = 'block';
+      document.getElementById('dash-main').style.display = 'block';
       document.getElementById('dash-empty').style.display = 'none';
-      document.getElementById('dash-table-title').textContent = stageLabels[stage] + ' 목록';
-      applyFilters();
+      document.getElementById('dash-content-title').textContent = stageLabels[stage] + ' 목록';
+      renderGroupContent();
     }
 
-    function applyFilters() {
-      if (!dashData || !currentStage) return;
-      const prefixFilter = document.getElementById('filter-prefix').value;
-      const assigneeFilter = document.getElementById('filter-assignee').value;
-
-      let tickets = dashData.tickets;
-
-      // Stage filter
-      if (currentStage !== 'all') {
-        tickets = tickets.filter(t => stageMap[t.status] === currentStage);
-      }
-      // Prefix filter
-      if (prefixFilter !== 'all') {
-        tickets = tickets.filter(t => t.prefix === prefixFilter);
-      }
-      // Assignee filter
-      if (assigneeFilter !== 'all') {
-        tickets = tickets.filter(t => t.assignee === assigneeFilter);
-      }
-      // Sort
-      if (sortKey) {
-        tickets.sort((a, b) => {
-          let va = a[sortKey] || '';
-          let vb = b[sortKey] || '';
-          if (va < vb) return sortAsc ? -1 : 1;
-          if (va > vb) return sortAsc ? 1 : -1;
-          return 0;
-        });
-      }
-
-      renderTable(tickets);
+    function switchGroup(group) {
+      currentGroup = group;
+      currentPage = 1;
+      document.querySelectorAll('.dg-card').forEach(c => c.classList.remove('active'));
+      document.querySelector('.dg-card[data-group="' + group + '"]').classList.add('active');
+      renderGroupContent();
     }
 
-    function sortTable(key) {
-      if (sortKey === key) { sortAsc = !sortAsc; }
-      else { sortKey = key; sortAsc = true; }
-      applyFilters();
+    function renderGroupContent() {
+      const tickets = getFilteredTickets();
+      const body = document.getElementById('dash-content-body');
+      const title = document.getElementById('dash-content-title');
+      title.textContent = stageLabels[currentStage] + ' 목록';
+
+      if (currentGroup === 'all') {
+        renderFlatList(tickets, body);
+      } else if (currentGroup === 'byPrefix') {
+        renderGrouped(tickets, body, t => t.prefix, ['QA', 'TC'], prefixGroupLabel);
+      } else if (currentGroup === 'byStatus') {
+        renderGrouped(tickets, body, t => t.status, ['대기 중', '개발 중', '완료됨'], statusGroupLabel);
+      } else if (currentGroup === 'byAssignee') {
+        const assignees = [...new Set(tickets.map(t => t.assignee))].sort();
+        renderGrouped(tickets, body, t => t.assignee, assignees, assigneeGroupLabel);
+      }
     }
 
-    function renderTable(tickets) {
-      const tbody = document.getElementById('dash-tbody');
-      if (tickets.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:2rem;">해당 조건의 티켓이 없습니다</td></tr>';
-        return;
-      }
-      tbody.innerHTML = tickets.map(t => {
-        const prefixClass = t.prefix === 'QA' ? 'pb-qa' : 'pb-tc';
-        const badgeClass = statusBadgeClass[t.status] || '';
-        const dueDisplay = t.dueDate ? t.dueDate.slice(2).replace(/-/g, '.') : '-';
-        // Remove prefix from summary for cleaner display
-        let cleanSummary = t.summary;
-        if (cleanSummary.startsWith('QA - ')) cleanSummary = cleanSummary.slice(5);
-        else if (cleanSummary.startsWith('TC - ')) cleanSummary = cleanSummary.slice(5);
-        else if (cleanSummary.startsWith('QA ')) cleanSummary = cleanSummary.slice(3);
-        else if (cleanSummary.startsWith('TC ')) cleanSummary = cleanSummary.slice(3);
+    function prefixGroupLabel(key) {
+      return key === 'QA' ? '<span class="prefix-badge pb-qa">QA</span> QA 에픽' : '<span class="prefix-badge pb-tc">TC</span> TC 에픽';
+    }
+    function statusGroupLabel(key) {
+      const cls = statusBadgeClass[key] || '';
+      return '<span class="status-badge ' + cls + '">' + key + '</span>';
+    }
+    function assigneeGroupLabel(key) { return key === '-' ? '미할당' : key; }
 
-        return '<tr>' +
-          '<td><span class="prefix-badge ' + prefixClass + '">' + t.prefix + '</span></td>' +
+    function renderGrouped(tickets, container, keyFn, orderedKeys, labelFn) {
+      const groups = {};
+      orderedKeys.forEach(k => groups[k] = []);
+      tickets.forEach(t => {
+        const k = keyFn(t);
+        if (!groups[k]) groups[k] = [];
+        groups[k].push(t);
+      });
+
+      let html = '';
+      orderedKeys.forEach(k => {
+        const items = groups[k];
+        if (items.length === 0) return;
+        html += '<div class="group-section" id="gs-' + k + '">' +
+          '<div class="group-section-header" onclick="toggleGroup(this)">' +
+            '<div class="group-section-title">' + labelFn(k) + ' <span class="group-count">' + items.length + '</span></div>' +
+            '<span class="group-toggle">&#9660;</span>' +
+          '</div>' +
+          '<div class="group-table">' + buildTable(items) + '</div>' +
+        '</div>';
+      });
+      container.innerHTML = html || '<div style="text-align:center;color:var(--text-muted);padding:2rem;">해당 조건의 티켓이 없습니다</div>';
+      document.getElementById('dash-pagination').innerHTML = '';
+    }
+
+    function toggleGroup(header) {
+      header.closest('.group-section').classList.toggle('collapsed');
+    }
+
+    function renderFlatList(tickets, container) {
+      const totalPages = Math.max(1, Math.ceil(tickets.length / PAGE_SIZE));
+      if (currentPage > totalPages) currentPage = totalPages;
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const pageTickets = tickets.slice(start, start + PAGE_SIZE);
+
+      container.innerHTML = tickets.length > 0
+        ? buildTable(pageTickets)
+        : '<div style="text-align:center;color:var(--text-muted);padding:2rem;">해당 조건의 티켓이 없습니다</div>';
+
+      // Pagination
+      const pag = document.getElementById('dash-pagination');
+      if (totalPages <= 1) { pag.innerHTML = ''; return; }
+      let ph = '<button onclick="goPage(' + (currentPage-1) + ')" ' + (currentPage===1?'disabled':'') + '>&laquo;</button>';
+      for (let i = 1; i <= totalPages; i++) {
+        ph += '<button onclick="goPage(' + i + ')" class="' + (i===currentPage?'active':'') + '">' + i + '</button>';
+      }
+      ph += '<button onclick="goPage(' + (currentPage+1) + ')" ' + (currentPage===totalPages?'disabled':'') + '>&raquo;</button>';
+      ph += '<span>' + tickets.length + '건</span>';
+      pag.innerHTML = ph;
+    }
+
+    function goPage(p) {
+      currentPage = p;
+      renderGroupContent();
+    }
+
+    function buildTable(tickets) {
+      let html = '<table class="step-table"><thead><tr>' +
+        '<th style="width:50px">유형</th><th style="width:110px">티켓</th><th>과제명</th>' +
+        '<th style="width:80px">상태</th><th style="width:80px">담당</th><th style="width:80px">목표일</th>' +
+        '</tr></thead><tbody>';
+      tickets.forEach(t => {
+        const pc = t.prefix === 'QA' ? 'pb-qa' : 'pb-tc';
+        const sc = statusBadgeClass[t.status] || '';
+        const due = t.dueDate ? t.dueDate.slice(2).replace(/-/g, '.') : '-';
+        let cs = t.summary;
+        if (cs.startsWith('QA - ')) cs = cs.slice(5);
+        else if (cs.startsWith('TC - ')) cs = cs.slice(5);
+        else if (cs.startsWith('QA ')) cs = cs.slice(3);
+        else if (cs.startsWith('TC ')) cs = cs.slice(3);
+        html += '<tr>' +
+          '<td><span class="prefix-badge ' + pc + '">' + t.prefix + '</span></td>' +
           '<td><a href="' + t.jiraUrl + '" target="_blank" class="jira-link">' + t.key + ' &#8599;</a></td>' +
-          '<td><span class="summary-text" title="' + t.summary.replace(/"/g, '&quot;') + '">' + cleanSummary.trim() + '</span></td>' +
-          '<td><span class="status-badge ' + badgeClass + '">' + t.status + '</span></td>' +
+          '<td><span class="summary-text" title="' + t.summary.replace(/"/g,'&quot;') + '">' + cs.trim() + '</span></td>' +
+          '<td><span class="status-badge ' + sc + '">' + t.status + '</span></td>' +
           '<td>' + t.assignee + '</td>' +
-          '<td>' + dueDisplay + '</td>' +
-        '</tr>';
-      }).join('');
+          '<td>' + due + '</td></tr>';
+      });
+      html += '</tbody></table>';
+      return html;
     }
   </script>
 </body>
