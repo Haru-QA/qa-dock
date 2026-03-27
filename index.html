@@ -995,8 +995,8 @@
       if (currentGroup === 'all') {
         renderBugFlatList(bugs, body);
       } else if (currentGroup === 'byAssignee') {
-        const keys = [...new Set(bugs.map(b => b.assignee))].sort();
-        renderBugGrouped(bugs, body, b => b.assignee, keys, k => k === '-' ? '미할당' : k);
+        const keys = [...new Set(bugs.map(b => b.qaAssignee || '-'))].sort();
+        renderBugGrouped(bugs, body, b => b.qaAssignee || '-', keys, k => k === '-' ? '미할당' : k);
       } else if (currentGroup === 'byService') {
         const keys = [...new Set(bugs.map(b => b.service))].sort();
         renderBugGrouped(bugs, body, b => b.service, keys, k => k);
