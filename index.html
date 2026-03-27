@@ -541,7 +541,11 @@
             <span class="bug-st">머지됨</span>
           </div>
         </div>
-        <div class="bug-sub">미수정: QA중 &#8594; 대기중 &nbsp;&middot;&nbsp; 오탐: QA중 &#8594; 버그아님 &nbsp;&middot;&nbsp; 보류: 대기중 &#8594; 백로그</div>
+        <div class="bug-sub">
+          미수정: QA중 &#8594; 대기중<br>
+          오탐: QA중 &#8594; 버그아님<br>
+          보류: 대기중 &#8594; 백로그
+        </div>
       </div>
       <div class="wf-panel">
         <h3>Bug Priority</h3>
@@ -1051,11 +1055,12 @@
       let html = '<table class="step-table"><thead><tr>' +
         '<th style="width:100px">티켓</th><th>결함 내용</th><th style="width:50px">서비스</th>' +
         '<th style="width:60px">심각도</th><th style="width:60px">상태</th>' +
-        '<th style="width:50px">담당</th><th style="width:45px">QA</th><th style="width:40px">PM</th>' +
+        '<th style="width:50px">담당</th><th style="width:45px">QA</th><th style="width:40px">PM</th><th style="width:60px">등록일</th>' +
         '</tr></thead><tbody>';
       bugs.forEach(b => {
         const bpc = bugPriBadge[b.priority] || '';
         const bsc = statusBadgeClass[b.status] || 'sb-inprogress';
+        const bCreated = b.created ? b.created.slice(2).replace(/-/g, '.') : '-';
         html += '<tr>' +
           '<td><a href="' + b.jiraUrl + '" target="_blank" class="jira-link">' + b.key + '&nbsp;&#8599;</a></td>' +
           '<td><span class="summary-text" title="' + b.summary.replace(/"/g,'&quot;') + '">' + b.summary.trim() + '</span></td>' +
@@ -1064,7 +1069,8 @@
           '<td><span class="status-badge ' + bsc + '">' + b.status + '</span></td>' +
           '<td>' + b.assignee + '</td>' +
           '<td>' + (b.qaAssignee || '-') + '</td>' +
-          '<td>' + (b.pm || '-') + '</td></tr>';
+          '<td>' + (b.pm || '-') + '</td>' +
+          '<td>' + bCreated + '</td></tr>';
       });
       html += '</tbody></table>';
       return html;
@@ -1078,7 +1084,7 @@
       let html = '<table class="step-table"><thead><tr>' +
         '<th style="width:40px">유형</th><th style="width:100px">티켓</th><th>과제명</th>' +
         '<th style="width:50px">우선순위</th><th style="width:60px">상태</th>' +
-        '<th style="width:35px">결함</th><th style="width:50px">QA</th><th style="width:45px">PM</th><th style="width:45px">개발</th><th style="width:55px">목표일</th>' +
+        '<th style="width:35px">결함</th><th style="width:50px">QA</th><th style="width:45px">PM</th><th style="width:45px">개발</th><th style="width:60px">등록일</th><th style="width:55px">목표일</th>' +
         '</tr></thead><tbody>';
       tickets.forEach(t => {
         const pc = t.prefix === 'QA' ? 'pb-qa' : 'pb-tc';
@@ -1097,6 +1103,7 @@
           ? '<span class="bug-count-badge has-bugs">' + bc + '</span>'
           : '<span class="bug-count-badge no-bugs">0</span>';
         const dev = t.dev || '-';
+        const created = t.created ? t.created.slice(2).replace(/-/g, '.') : '-';
         html += '<tr>' +
           '<td><span class="prefix-badge ' + pc + '">' + t.prefix + '</span></td>' +
           '<td><a href="' + t.jiraUrl + '" target="_blank" class="jira-link">' + t.key + '&nbsp;&#8599;</a></td>' +
@@ -1107,6 +1114,7 @@
           '<td>' + t.assignee + '</td>' +
           '<td>' + pm + '</td>' +
           '<td>' + dev + '</td>' +
+          '<td>' + created + '</td>' +
           '<td>' + due + '</td></tr>';
       });
       html += '</tbody></table>';

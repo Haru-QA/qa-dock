@@ -20,7 +20,8 @@
       "pm": "열매",
       "dev": "현웅",
       "bizPriority": "중",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-27"
     },
     {
       "key": "GRIPPE-1868",
@@ -34,7 +35,8 @@
       "pm": "열매",
       "dev": "조이",
       "bizPriority": "중",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPPE-1867",
@@ -48,7 +50,8 @@
       "pm": "열매",
       "dev": "조이",
       "bizPriority": "중",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPPE-1866",
@@ -62,7 +65,8 @@
       "pm": "열매",
       "dev": "현웅",
       "bizPriority": "중",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPPE-1865",
@@ -76,7 +80,8 @@
       "pm": "선영",
       "dev": "재석",
       "bizPriority": "필수",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPPE-1864",
@@ -90,7 +95,8 @@
       "pm": "선영",
       "dev": "재석",
       "bizPriority": "필수",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPPE-1863",
@@ -104,7 +110,8 @@
       "pm": "예나",
       "dev": "낙선",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPPE-1862",
@@ -118,7 +125,8 @@
       "pm": "예나",
       "dev": "낙선",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPPE-1861",
@@ -132,7 +140,8 @@
       "pm": "열매",
       "dev": "조이",
       "bizPriority": "중",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPPE-1860",
@@ -146,7 +155,8 @@
       "pm": "열매",
       "dev": "재석",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPPE-1857",
@@ -160,7 +170,8 @@
       "pm": "장예나",
       "dev": "조이",
       "bizPriority": "중",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPPE-1856",
@@ -174,7 +185,8 @@
       "pm": "예나",
       "dev": "낙선",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-23"
     },
     {
       "key": "GRIPPE-1855",
@@ -188,7 +200,8 @@
       "pm": "예나",
       "dev": "낙선",
       "bizPriority": "중",
-      "bugCount": 5
+      "bugCount": 5,
+      "created": "2026-03-17"
     },
     {
       "key": "GRIPPE-1853",
@@ -202,7 +215,8 @@
       "pm": "예나",
       "dev": "낙선",
       "bizPriority": "중",
-      "bugCount": 5
+      "bugCount": 5,
+      "created": "2026-03-16"
     },
     {
       "key": "GRIPPE-1852",
@@ -216,7 +230,8 @@
       "pm": "예나",
       "dev": "낙선",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-11"
     },
     {
       "key": "GRIPPE-1851",
@@ -230,7 +245,8 @@
       "pm": "이미영",
       "dev": "현웅",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-06"
     },
     {
       "key": "GRIPPE-1850",
@@ -244,7 +260,8 @@
       "pm": "이미영",
       "dev": "현웅",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-06"
     },
     {
       "key": "GRIPPE-1849",
@@ -258,7 +275,8 @@
       "pm": "열매",
       "dev": "재석",
       "bizPriority": "상",
-      "bugCount": 8
+      "bugCount": 8,
+      "created": "2026-03-05"
     },
     {
       "key": "GRIPPE-1848",
@@ -272,7 +290,8 @@
       "pm": "열매",
       "dev": "재석",
       "bizPriority": "상",
-      "bugCount": 8
+      "bugCount": 8,
+      "created": "2026-03-05"
     },
     {
       "key": "GRIPPE-1847",
@@ -286,7 +305,8 @@
       "pm": "열매",
       "dev": "재석",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-03"
     },
     {
       "key": "GRIPPE-1846",
@@ -300,7 +320,8 @@
       "pm": "열매",
       "dev": "재석",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-03"
     },
     {
       "key": "GRIPPE-1843",
@@ -314,7 +335,8 @@
       "pm": "-",
       "dev": "영기",
       "bizPriority": "-",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-03"
     },
     {
       "key": "GRIPPE-1842",
@@ -328,7 +350,8 @@
       "pm": "-",
       "dev": "영기",
       "bizPriority": "-",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-03"
     },
     {
       "key": "GRIPPE-1841",
@@ -342,7 +365,8 @@
       "pm": "-",
       "dev": "영기",
       "bizPriority": "-",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-03-03"
     },
     {
       "key": "GRIPPE-1839",
@@ -356,7 +380,8 @@
       "pm": "-",
       "dev": "아리",
       "bizPriority": "-",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-02-13"
     },
     {
       "key": "GRIPPE-1838",
@@ -370,7 +395,8 @@
       "pm": "유선",
       "dev": "현웅",
       "bizPriority": "중",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-02-13"
     },
     {
       "key": "GRIPPE-1837",
@@ -384,7 +410,8 @@
       "pm": "예나",
       "dev": "현웅",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-02-13"
     },
     {
       "key": "GRIPPE-1833",
@@ -398,7 +425,8 @@
       "pm": "예나",
       "dev": "현웅",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-02-12"
     },
     {
       "key": "GRIPPE-1830",
@@ -412,7 +440,8 @@
       "pm": "미영",
       "dev": "현웅",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-22"
     },
     {
       "key": "GRIPPE-1829",
@@ -426,7 +455,8 @@
       "pm": "미영",
       "dev": "현웅",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-21"
     },
     {
       "key": "GRIPPE-1828",
@@ -440,7 +470,8 @@
       "pm": "미영",
       "dev": "현웅",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-21"
     },
     {
       "key": "GRIPPE-1827",
@@ -454,7 +485,8 @@
       "pm": "열매",
       "dev": "재석",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-15"
     },
     {
       "key": "GRIPPE-1826",
@@ -468,7 +500,8 @@
       "pm": "열매",
       "dev": "재석",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-15"
     },
     {
       "key": "GRIPPE-1825",
@@ -482,7 +515,8 @@
       "pm": "선영",
       "dev": "용현",
       "bizPriority": "-",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-15"
     },
     {
       "key": "GRIPPE-1823",
@@ -496,7 +530,8 @@
       "pm": "유선",
       "dev": "낙선",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-14"
     },
     {
       "key": "GRIPPE-1822",
@@ -510,7 +545,8 @@
       "pm": "예나",
       "dev": "성찬",
       "bizPriority": "-",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-12"
     },
     {
       "key": "GRIPPE-1821",
@@ -524,7 +560,8 @@
       "pm": "예나",
       "dev": "성찬",
       "bizPriority": "-",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-12"
     },
     {
       "key": "GRIPPE-1820",
@@ -538,7 +575,8 @@
       "pm": "선영",
       "dev": "재석",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-12"
     },
     {
       "key": "GRIPPE-1819",
@@ -552,7 +590,8 @@
       "pm": "유선",
       "dev": "조이",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-09"
     },
     {
       "key": "GRIPPE-1818",
@@ -566,7 +605,8 @@
       "pm": "열매",
       "dev": "재석",
       "bizPriority": "상",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-08"
     },
     {
       "key": "GRIPPE-1814",
@@ -580,7 +620,8 @@
       "pm": "김연화",
       "dev": "조이",
       "bizPriority": "필수",
-      "bugCount": 0
+      "bugCount": 0,
+      "created": "2026-01-08"
     }
   ],
   "bugSummary": {
@@ -614,7 +655,8 @@
       "grippgmKey": "GRIPPGM-2826",
       "qaAssignee": "주아",
       "pm": "예나",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-27"
     },
     {
       "key": "GRIPSVR-9239",
@@ -627,7 +669,8 @@
       "grippgmKey": "GRIPPGM-1168",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-27"
     },
     {
       "key": "GRIPWEB-9002",
@@ -640,7 +683,8 @@
       "grippgmKey": "GRIPPGM-2826",
       "qaAssignee": "주아",
       "pm": "예나",
-      "service": "웹"
+      "service": "웹",
+      "created": "2026-03-27"
     },
     {
       "key": "GRIPSVR-9235",
@@ -653,7 +697,8 @@
       "grippgmKey": "GRIPPGM-2744",
       "qaAssignee": "은지",
       "pm": "열매",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPIOS-4950",
@@ -666,7 +711,8 @@
       "grippgmKey": "",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "iOS"
+      "service": "iOS",
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPSVR-9226",
@@ -679,7 +725,8 @@
       "grippgmKey": "GRIPPGM-1169",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPIOS-4949",
@@ -692,7 +739,8 @@
       "grippgmKey": "GRIPPGM-1168",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "iOS"
+      "service": "iOS",
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPSVR-9225",
@@ -705,7 +753,8 @@
       "grippgmKey": "GRIPPGM-2744",
       "qaAssignee": "은지",
       "pm": "열매",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPSVR-9223",
@@ -718,7 +767,8 @@
       "grippgmKey": "GRIPPGM-2826",
       "qaAssignee": "주아",
       "pm": "예나",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPAND-6827",
@@ -731,7 +781,8 @@
       "grippgmKey": "GRIPPGM-2914",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "AOS"
+      "service": "AOS",
+      "created": "2026-03-26"
     },
     {
       "key": "GRIPSVR-9221",
@@ -744,7 +795,8 @@
       "grippgmKey": "GRIPPGM-2744",
       "qaAssignee": "은지",
       "pm": "열매",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPWEB-8987",
@@ -757,7 +809,8 @@
       "grippgmKey": "",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "웹"
+      "service": "웹",
+      "created": ""
     },
     {
       "key": "GRIPSVR-9220",
@@ -770,7 +823,8 @@
       "grippgmKey": "GRIPPGM-2744",
       "qaAssignee": "은지",
       "pm": "열매",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPSVR-9219",
@@ -783,7 +837,8 @@
       "grippgmKey": "",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPSVR-9218",
@@ -796,7 +851,8 @@
       "grippgmKey": "GRIPPGM-2744",
       "qaAssignee": "은지",
       "pm": "열매",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPWEB-8986",
@@ -809,7 +865,8 @@
       "grippgmKey": "GRIPPGM-2826",
       "qaAssignee": "주아",
       "pm": "예나",
-      "service": "웹"
+      "service": "웹",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPIOS-4947",
@@ -822,7 +879,8 @@
       "grippgmKey": "",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "iOS"
+      "service": "iOS",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPIOS-4946",
@@ -835,7 +893,8 @@
       "grippgmKey": "",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "iOS"
+      "service": "iOS",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPWEB-8985",
@@ -848,7 +907,8 @@
       "grippgmKey": "",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "웹"
+      "service": "웹",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPWEB-8984",
@@ -861,7 +921,8 @@
       "grippgmKey": "GRIPPGM-1170",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "웹"
+      "service": "웹",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPWEB-8983",
@@ -874,7 +935,8 @@
       "grippgmKey": "",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "웹"
+      "service": "웹",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPWEB-8982",
@@ -887,7 +949,8 @@
       "grippgmKey": "GRIPPGM-2826",
       "qaAssignee": "주아",
       "pm": "예나",
-      "service": "웹"
+      "service": "웹",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPWEB-8981",
@@ -900,7 +963,8 @@
       "grippgmKey": "",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "웹"
+      "service": "웹",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPSVR-9216",
@@ -913,7 +977,8 @@
       "grippgmKey": "",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPSVR-9214",
@@ -926,7 +991,8 @@
       "grippgmKey": "GRIPPGM-2744",
       "qaAssignee": "은지",
       "pm": "열매",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-25"
     },
     {
       "key": "GRIPWEB-8980",
@@ -939,7 +1005,8 @@
       "grippgmKey": "",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "웹"
+      "service": "웹",
+      "created": "2026-03-24"
     },
     {
       "key": "GRIPWEB-8978",
@@ -952,7 +1019,8 @@
       "grippgmKey": "",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "웹"
+      "service": "웹",
+      "created": "2026-03-24"
     },
     {
       "key": "GRIPSVR-9211",
@@ -965,7 +1033,8 @@
       "grippgmKey": "GRIPPGM-2744",
       "qaAssignee": "은지",
       "pm": "열매",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-24"
     },
     {
       "key": "GRIPSVR-9210",
@@ -978,7 +1047,8 @@
       "grippgmKey": "GRIPPGM-2744",
       "qaAssignee": "은지",
       "pm": "열매",
-      "service": "서버"
+      "service": "서버",
+      "created": "2026-03-24"
     },
     {
       "key": "GRIPWEB-8977",
@@ -991,7 +1061,8 @@
       "grippgmKey": "GRIPPGM-2876",
       "qaAssignee": "-",
       "pm": "-",
-      "service": "웹"
+      "service": "웹",
+      "created": "2026-03-24"
     }
   ]
 }
