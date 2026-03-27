@@ -227,6 +227,7 @@
     .pb-tc { background: rgba(168,85,247,0.15); color: var(--purple); }
     .jira-link {
       color: var(--blue); text-decoration: none; font-size: 0.8rem; font-weight: 600;
+      white-space: nowrap;
     }
     .jira-link:hover { text-decoration: underline; }
     .summary-text {
@@ -408,6 +409,7 @@
       padding: 0.55rem 0.7rem;
       border-bottom: 1px solid rgba(51,65,85,0.4);
       vertical-align: top;
+      white-space: nowrap;
     }
     .step-table tr:last-child td { border-bottom: none; }
     .step-table tbody tr:hover td { background: rgba(59,130,246,0.04); }
@@ -472,7 +474,7 @@
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
       <div>
         <h2 style="font-size:1.4rem;margin-bottom:0.2rem;">QA 대시보드</h2>
-        <p style="color:var(--text-dim);font-size:0.82rem;">GRIPPE 칸반보드 &middot; QA/TC 프리픽스 필터 &middot; <span id="dash-updated">-</span></p>
+        <p style="color:var(--text-dim);font-size:0.82rem;">GRIPPE 칸반보드 &middot; QA/TC 프리픽스 &middot; 2026년 &middot; <span id="dash-updated">-</span></p>
       </div>
       <div style="color:var(--text-muted);font-size:0.82rem;">총 <span id="dash-total" style="color:var(--text);font-weight:700;">-</span>건</div>
     </div>
@@ -832,6 +834,7 @@
       document.getElementById('dash-main').style.display = 'block';
       document.getElementById('dash-empty').style.display = 'none';
       document.getElementById('dash-content-title').textContent = stageLabels[stage] + ' 목록';
+      updateGroupTabs('qa');
       renderGroupContent();
     }
 
@@ -856,17 +859,41 @@
       document.getElementById('dash-main').style.display = 'block';
       document.getElementById('dash-empty').style.display = 'none';
       document.getElementById('dash-content-title').textContent = '결함 ' + bugFilterLabels[filter] + ' 목록';
-      // Hide QA group tabs, show bug list directly
-      document.querySelector('.dash-group-tabs').style.display = 'none';
-      renderBugList();
+      document.querySelector('.dash-group-tabs').style.display = 'flex';
+      // Update tabs for bug mode
+      updateGroupTabs('bug');
+      renderBugGroupContent();
     }
 
     function switchGroup(group) {
       currentGroup = group;
       currentPage = 1;
       document.querySelectorAll('.dg-tab').forEach(c => c.classList.remove('active'));
-      document.querySelector('.dg-tab[data-group="' + group + '"]').classList.add('active');
-      renderGroupContent();
+      const tab = document.querySelector('.dg-tab[data-group="' + group + '"]');
+      if (tab) tab.classList.add('active');
+      if (currentMode === 'bug') {
+        renderBugGroupContent();
+      } else {
+        renderGroupContent();
+      }
+    }
+
+    function updateGroupTabs(mode) {
+      const container = document.querySelector('.dash-group-tabs');
+      if (mode === 'bug') {
+        container.innerHTML =
+          '<button class="dg-tab active" data-group="all" onclick="switchGroup(\'all\')">전체 목록</button>' +
+          '<button class="dg-tab" data-group="byAssignee" onclick="switchGroup(\'byAssignee\')">담당자별</button>' +
+          '<button class="dg-tab" data-group="byService" onclick="switchGroup(\'byService\')">서비스별</button>' +
+          '<button class="dg-tab" data-group="byBugStatus" onclick="switchGroup(\'byBugStatus\')">상태별</button>' +
+          '<button class="dg-tab" data-group="bySeverity" onclick="switchGroup(\'bySeverity\')">심각도별</button>';
+      } else {
+        container.innerHTML =
+          '<button class="dg-tab active" data-group="all" onclick="switchGroup(\'all\')">전체 목록</button>' +
+          '<button class="dg-tab" data-group="byPrefix" onclick="switchGroup(\'byPrefix\')">유형별 (QA/TC)</button>' +
+          '<button class="dg-tab" data-group="byAssignee" onclick="switchGroup(\'byAssignee\')">담당자별</button>';
+      }
+      currentGroup = 'all';
     }
 
     function renderGroupContent() {
@@ -951,46 +978,97 @@
       renderGroupContent();
     }
 
-    function renderBugList() {
-      if (!dashData || !dashData.bugs) return;
+    function getFilteredBugs() {
+      if (!dashData || !dashData.bugs) return [];
       let bugs = dashData.bugs;
       const allowed = bugStatusMap[currentBugFilter];
       if (allowed) bugs = bugs.filter(b => allowed.includes(b.status));
+      return bugs;
+    }
 
+    function renderBugGroupContent() {
+      const bugs = getFilteredBugs();
       const body = document.getElementById('dash-content-body');
-      const pag = document.getElementById('dash-pagination');
+      const title = document.getElementById('dash-content-title');
+      title.textContent = '결함 ' + bugFilterLabels[currentBugFilter] + ' 목록';
+
+      if (currentGroup === 'all') {
+        renderBugFlatList(bugs, body);
+      } else if (currentGroup === 'byAssignee') {
+        const keys = [...new Set(bugs.map(b => b.assignee))].sort();
+        renderBugGrouped(bugs, body, b => b.assignee, keys, k => k === '-' ? '미할당' : k);
+      } else if (currentGroup === 'byService') {
+        const keys = [...new Set(bugs.map(b => b.service))].sort();
+        renderBugGrouped(bugs, body, b => b.service, keys, k => k);
+      } else if (currentGroup === 'byBugStatus') {
+        renderBugGrouped(bugs, body, b => b.status, ['대기 중', 'QA 중', '리뷰 중', '완료됨'], k => {
+          const c = statusBadgeClass[k] || 'sb-inprogress';
+          return '<span class="status-badge ' + c + '">' + k + '</span>';
+        });
+      } else if (currentGroup === 'bySeverity') {
+        renderBugGrouped(bugs, body, b => b.priority, ['Blocker','Critical','Major','Minor','Trivial'], k => {
+          const c = bugPriBadge[k] || '';
+          return '<span class="biz-pri ' + c + '">' + k + '</span>';
+        });
+      }
+    }
+
+    function renderBugGrouped(bugs, container, keyFn, orderedKeys, labelFn) {
+      const groups = {};
+      orderedKeys.forEach(k => groups[k] = []);
+      bugs.forEach(b => { const k = keyFn(b); if (!groups[k]) groups[k] = []; groups[k].push(b); });
+      let html = '';
+      orderedKeys.forEach(k => {
+        if (!groups[k] || groups[k].length === 0) return;
+        html += '<div class="group-section">' +
+          '<div class="group-section-header" onclick="toggleGroup(this)">' +
+            '<div class="group-section-title">' + labelFn(k) + ' <span class="group-count">' + groups[k].length + '</span></div>' +
+            '<span class="group-toggle">&#9660;</span>' +
+          '</div><div class="group-table">' + buildBugTable(groups[k]) + '</div></div>';
+      });
+      container.innerHTML = html || '<div style="text-align:center;color:var(--text-muted);padding:2rem;">결함 없음</div>';
+      document.getElementById('dash-pagination').innerHTML = '';
+    }
+
+    function renderBugFlatList(bugs, container) {
       const totalPages = Math.max(1, Math.ceil(bugs.length / PAGE_SIZE));
       if (currentPage > totalPages) currentPage = totalPages;
       const pageBugs = bugs.slice((currentPage-1)*PAGE_SIZE, currentPage*PAGE_SIZE);
-
-      let html = '<table class="step-table"><thead><tr>' +
-        '<th style="width:120px">티켓</th><th>결함 내용</th>' +
-        '<th style="width:70px">심각도</th><th style="width:70px">상태</th>' +
-        '<th style="width:70px">담당</th></tr></thead><tbody>';
-      pageBugs.forEach(b => {
-        const bpc = bugPriBadge[b.priority] || '';
-        const bsc = statusBadgeClass[b.status] || 'sb-inprogress';
-        html += '<tr>' +
-          '<td><a href="' + b.jiraUrl + '" target="_blank" class="jira-link">' + b.key + ' &#8599;</a></td>' +
-          '<td><span class="summary-text" title="' + b.summary.replace(/"/g,'&quot;') + '">' + b.summary.trim() + '</span></td>' +
-          '<td>' + (b.priority !== '-' ? '<span class="biz-pri ' + bpc + '">' + b.priority + '</span>' : '-') + '</td>' +
-          '<td><span class="status-badge ' + bsc + '">' + b.status + '</span></td>' +
-          '<td>' + b.assignee + '</td></tr>';
-      });
-      html += '</tbody></table>';
-      body.innerHTML = bugs.length > 0 ? html : '<div style="text-align:center;color:var(--text-muted);padding:2rem;">결함 데이터 없음</div>';
-
+      container.innerHTML = bugs.length > 0
+        ? buildBugTable(pageBugs)
+        : '<div style="text-align:center;color:var(--text-muted);padding:2rem;">결함 없음</div>';
+      const pag = document.getElementById('dash-pagination');
       if (totalPages <= 1) { pag.innerHTML = ''; return; }
       let ph = '<button onclick="bugPage(' + (currentPage-1) + ')" ' + (currentPage===1?'disabled':'') + '>&laquo;</button>';
-      for (let i = 1; i <= totalPages; i++) {
-        ph += '<button onclick="bugPage(' + i + ')" class="' + (i===currentPage?'active':'') + '">' + i + '</button>';
-      }
-      ph += '<button onclick="bugPage(' + (currentPage+1) + ')" ' + (currentPage===totalPages?'disabled':'') + '>&raquo;</button>';
-      ph += '<span>' + bugs.length + '건</span>';
+      for (let i = 1; i <= totalPages; i++) ph += '<button onclick="bugPage(' + i + ')" class="' + (i===currentPage?'active':'') + '">' + i + '</button>';
+      ph += '<button onclick="bugPage(' + (currentPage+1) + ')" ' + (currentPage===totalPages?'disabled':'') + '>&raquo;</button><span>' + bugs.length + '건</span>';
       pag.innerHTML = ph;
     }
 
-    function bugPage(p) { currentPage = p; renderBugList(); }
+    function bugPage(p) { currentPage = p; renderBugGroupContent(); }
+
+    function buildBugTable(bugs) {
+      let html = '<table class="step-table"><thead><tr>' +
+        '<th style="width:100px">티켓</th><th>결함 내용</th><th style="width:50px">서비스</th>' +
+        '<th style="width:60px">심각도</th><th style="width:60px">상태</th>' +
+        '<th style="width:50px">담당</th><th style="width:45px">QA</th><th style="width:40px">PM</th>' +
+        '</tr></thead><tbody>';
+      bugs.forEach(b => {
+        const bpc = bugPriBadge[b.priority] || '';
+        const bsc = statusBadgeClass[b.status] || 'sb-inprogress';
+        html += '<tr>' +
+          '<td><a href="' + b.jiraUrl + '" target="_blank" class="jira-link">' + b.key + '&nbsp;&#8599;</a></td>' +
+          '<td><span class="summary-text" title="' + b.summary.replace(/"/g,'&quot;') + '">' + b.summary.trim() + '</span></td>' +
+          '<td>' + (b.service || '-') + '</td>' +
+          '<td>' + (b.priority !== '-' ? '<span class="biz-pri ' + bpc + '">' + b.priority + '</span>' : '-') + '</td>' +
+          '<td><span class="status-badge ' + bsc + '">' + b.status + '</span></td>' +
+          '<td>' + b.assignee + '</td>' +
+          '<td>' + (b.qaAssignee || '-') + '</td>' +
+          '<td>' + (b.pm || '-') + '</td></tr>';
+      });
+      html += '</tbody></table>';
+      return html;
+    }
 
     const priBadgeClass = {
       '필수': 'pri-required', '상': 'pri-high', '중': 'pri-mid', '하': 'pri-low', '백로그': 'pri-backlog'
@@ -998,9 +1076,9 @@
 
     function buildTable(tickets) {
       let html = '<table class="step-table"><thead><tr>' +
-        '<th style="width:45px">유형</th><th style="width:105px">티켓</th><th>과제명</th>' +
-        '<th style="width:55px;white-space:nowrap">우선순위</th><th style="width:70px">상태</th>' +
-        '<th style="width:50px">결함</th><th style="width:65px">담당 QA</th><th style="width:55px">PM</th><th style="width:65px">목표일</th>' +
+        '<th style="width:40px">유형</th><th style="width:100px">티켓</th><th>과제명</th>' +
+        '<th style="width:50px">우선순위</th><th style="width:60px">상태</th>' +
+        '<th style="width:35px">결함</th><th style="width:50px">QA</th><th style="width:45px">PM</th><th style="width:45px">개발</th><th style="width:55px">목표일</th>' +
         '</tr></thead><tbody>';
       tickets.forEach(t => {
         const pc = t.prefix === 'QA' ? 'pb-qa' : 'pb-tc';
@@ -1024,9 +1102,11 @@
           '<td><span class="summary-text" title="' + t.summary.replace(/"/g,'&quot;') + '">' + cs.trim() + '</span></td>' +
           '<td>' + (bp !== '-' ? '<span class="biz-pri ' + bpc + '">' + bp + '</span>' : '-') + '</td>' +
           '<td><span class="status-badge ' + sc + '">' + t.status + '</span></td>' +
-          '<td>' + bugHtml + '</td>' +
+        const dev = t.dev || '-';
+        html += '<td>' + bugHtml + '</td>' +
           '<td>' + t.assignee + '</td>' +
           '<td>' + pm + '</td>' +
+          '<td>' + dev + '</td>' +
           '<td>' + due + '</td></tr>';
       });
       html += '</tbody></table>';
