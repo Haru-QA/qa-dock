@@ -1096,14 +1096,14 @@
         const bugHtml = bc > 0
           ? '<span class="bug-count-badge has-bugs">' + bc + '</span>'
           : '<span class="bug-count-badge no-bugs">0</span>';
+        const dev = t.dev || '-';
         html += '<tr>' +
           '<td><span class="prefix-badge ' + pc + '">' + t.prefix + '</span></td>' +
-          '<td><a href="' + t.jiraUrl + '" target="_blank" class="jira-link">' + t.key + ' &#8599;</a></td>' +
+          '<td><a href="' + t.jiraUrl + '" target="_blank" class="jira-link">' + t.key + '&nbsp;&#8599;</a></td>' +
           '<td><span class="summary-text" title="' + t.summary.replace(/"/g,'&quot;') + '">' + cs.trim() + '</span></td>' +
           '<td>' + (bp !== '-' ? '<span class="biz-pri ' + bpc + '">' + bp + '</span>' : '-') + '</td>' +
           '<td><span class="status-badge ' + sc + '">' + t.status + '</span></td>' +
-        const dev = t.dev || '-';
-        html += '<td>' + bugHtml + '</td>' +
+          '<td>' + bugHtml + '</td>' +
           '<td>' + t.assignee + '</td>' +
           '<td>' + pm + '</td>' +
           '<td>' + dev + '</td>' +
