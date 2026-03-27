@@ -176,16 +176,34 @@
       margin-bottom: 0.5rem;
     }
     .dash-section {
-      background: rgba(30,41,59,0.25);
-      border: 1px solid rgba(51,65,85,0.5);
       border-radius: 12px;
       padding: 1rem 1.2rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .dash-section.sec-qa {
+      background: rgba(59,130,246,0.06);
+      border: 1px solid rgba(59,130,246,0.2);
+    }
+    .dash-section.sec-bug {
+      background: rgba(239,68,68,0.06);
+      border: 1px solid rgba(239,68,68,0.2);
+    }
+    .dash-section.sec-active {
+      box-shadow: 0 0 0 2px rgba(255,255,255,0.6), 0 4px 24px rgba(0,0,0,0.3);
+    }
+    .dash-section.sec-qa.sec-active {
+      border-color: var(--blue);
+    }
+    .dash-section.sec-bug.sec-active {
+      border-color: var(--red);
     }
     .dash-section-label {
-      font-size: 0.82rem; font-weight: 700; color: var(--text-muted);
+      font-size: 0.82rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.6px;
       margin-bottom: 0.8rem;
     }
+    .sec-qa .dash-section-label { color: var(--blue); }
+    .sec-bug .dash-section-label { color: var(--red); }
     .dash-section .board-cards { margin-bottom: 0; }
     .dash-section .board-card { min-width: 100px; padding: 1rem 1.2rem; }
     .dash-section .board-card .count { font-size: 1.8rem; }
@@ -460,7 +478,7 @@
     </div>
     <div class="dash-two-col">
       <!-- Left: QA 작업 현황 -->
-      <div class="dash-section">
+      <div class="dash-section sec-qa" id="sec-qa">
         <div class="dash-section-label">QA 작업 현황</div>
         <div class="board-cards">
           <div class="board-card card-needed" data-stage="waiting" onclick="filterByStage('waiting')"><div class="count" id="cnt-waiting">-</div><div class="label">대기 중</div></div>
@@ -470,7 +488,7 @@
         </div>
       </div>
       <!-- Right: 결함 현황 -->
-      <div class="dash-section">
+      <div class="dash-section sec-bug" id="sec-bug">
         <div class="dash-section-label">결함 현황</div>
         <div class="board-cards">
           <div class="board-card card-needed" data-bug="open" onclick="filterByBug('open')"><div class="count" id="bug-open">-</div><div class="label">미해결</div></div>
@@ -807,8 +825,10 @@
       currentBugFilter = null;
       currentPage = 1;
       document.querySelectorAll('.board-card').forEach(c => { c.classList.remove('active-stage'); c.classList.remove('active-bug'); });
+      document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('sec-active'));
       const card = document.querySelector('.board-card[data-stage="' + stage + '"]');
       if (card) card.classList.add('active-stage');
+      document.getElementById('sec-qa').classList.add('sec-active');
       document.getElementById('dash-main').style.display = 'block';
       document.getElementById('dash-empty').style.display = 'none';
       document.getElementById('dash-content-title').textContent = stageLabels[stage] + ' 목록';
@@ -829,8 +849,10 @@
       currentBugFilter = filter;
       currentPage = 1;
       document.querySelectorAll('.board-card').forEach(c => { c.classList.remove('active-stage'); c.classList.remove('active-bug'); });
+      document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('sec-active'));
       const card = document.querySelector('.board-card[data-bug="' + filter + '"]');
       if (card) card.classList.add('active-bug');
+      document.getElementById('sec-bug').classList.add('sec-active');
       document.getElementById('dash-main').style.display = 'block';
       document.getElementById('dash-empty').style.display = 'none';
       document.getElementById('dash-content-title').textContent = '결함 ' + bugFilterLabels[filter] + ' 목록';
