@@ -153,6 +153,16 @@
     .group-section.collapsed .group-toggle { transform: rotate(-90deg); }
     .group-section.collapsed .group-table { display: none; }
 
+    .biz-pri {
+      display: inline-block; padding: 2px 7px; border-radius: 4px;
+      font-size: 0.72rem; font-weight: 700; white-space: nowrap;
+    }
+    .pri-required { background: rgba(220,38,38,0.15); color: #dc2626; }
+    .pri-high     { background: rgba(234,88,12,0.15); color: #ea580c; }
+    .pri-mid      { background: rgba(202,138,4,0.15); color: #ca8a04; }
+    .pri-low      { background: rgba(101,163,13,0.15); color: #65a30d; }
+    .pri-backlog  { background: rgba(156,163,175,0.15); color: #9ca3af; }
+
     .board-card.active-stage {
       box-shadow: 0 0 0 2px #fff, 0 4px 20px rgba(0,0,0,0.3);
       transform: translateY(-2px);
@@ -432,7 +442,6 @@
       <div class="dash-group-tabs">
         <button class="dg-tab active" data-group="all" onclick="switchGroup('all')">전체 목록</button>
         <button class="dg-tab" data-group="byPrefix" onclick="switchGroup('byPrefix')">유형별 (QA/TC)</button>
-        <button class="dg-tab" data-group="byStatus" onclick="switchGroup('byStatus')">상태별</button>
         <button class="dg-tab" data-group="byAssignee" onclick="switchGroup('byAssignee')">담당자별</button>
       </div>
       <div class="dash-content-header">
@@ -770,8 +779,6 @@
         renderFlatList(tickets, body);
       } else if (currentGroup === 'byPrefix') {
         renderGrouped(tickets, body, t => t.prefix, ['QA', 'TC'], prefixGroupLabel);
-      } else if (currentGroup === 'byStatus') {
-        renderGrouped(tickets, body, t => t.status, ['대기 중', '개발 중', '완료됨'], statusGroupLabel);
       } else if (currentGroup === 'byAssignee') {
         const assignees = [...new Set(tickets.map(t => t.assignee))].sort();
         renderGrouped(tickets, body, t => t.assignee, assignees, assigneeGroupLabel);
@@ -843,15 +850,23 @@
       renderGroupContent();
     }
 
+    const priBadgeClass = {
+      '필수': 'pri-required', '상': 'pri-high', '중': 'pri-mid', '하': 'pri-low', '백로그': 'pri-backlog'
+    };
+
     function buildTable(tickets) {
       let html = '<table class="step-table"><thead><tr>' +
-        '<th style="width:50px">유형</th><th style="width:110px">티켓</th><th>과제명</th>' +
-        '<th style="width:80px">상태</th><th style="width:80px">담당</th><th style="width:80px">목표일</th>' +
+        '<th style="width:45px">유형</th><th style="width:105px">티켓</th><th>과제명</th>' +
+        '<th style="width:65px">우선순위</th><th style="width:70px">상태</th>' +
+        '<th style="width:65px">담당 QA</th><th style="width:60px">PM</th><th style="width:65px">목표일</th>' +
         '</tr></thead><tbody>';
       tickets.forEach(t => {
         const pc = t.prefix === 'QA' ? 'pb-qa' : 'pb-tc';
         const sc = statusBadgeClass[t.status] || '';
         const due = t.dueDate ? t.dueDate.slice(2).replace(/-/g, '.') : '-';
+        const bp = t.bizPriority || '-';
+        const bpc = priBadgeClass[bp] || '';
+        const pm = t.pm || '-';
         let cs = t.summary;
         if (cs.startsWith('QA - ')) cs = cs.slice(5);
         else if (cs.startsWith('TC - ')) cs = cs.slice(5);
@@ -861,8 +876,10 @@
           '<td><span class="prefix-badge ' + pc + '">' + t.prefix + '</span></td>' +
           '<td><a href="' + t.jiraUrl + '" target="_blank" class="jira-link">' + t.key + ' &#8599;</a></td>' +
           '<td><span class="summary-text" title="' + t.summary.replace(/"/g,'&quot;') + '">' + cs.trim() + '</span></td>' +
+          '<td>' + (bp !== '-' ? '<span class="biz-pri ' + bpc + '">' + bp + '</span>' : '-') + '</td>' +
           '<td><span class="status-badge ' + sc + '">' + t.status + '</span></td>' +
           '<td>' + t.assignee + '</td>' +
+          '<td>' + pm + '</td>' +
           '<td>' + due + '</td></tr>';
       });
       html += '</tbody></table>';
